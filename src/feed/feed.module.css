@@ -1,0 +1,41 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.post {
+  width: 100%;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 5px;
+
+  background: white;
+}
+
+.button {
+  width: 300px;
+  height: 40px;
+  border: 1px solid;
+  border-radius: 5px;
+  margin-top: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: none;
+  border-color: #d91b5c;
+  color: #d91b5c;
+
+  font-size: 1.1rem;
+
+  cursor: pointer;
+}
+
+.button:hover {
+  color: white;
+  border-color: #d91b5c;
+  background-color: #d91b5c;
+}

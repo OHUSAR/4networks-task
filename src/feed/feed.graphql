@@ -1,0 +1,14 @@
+query Feed($after: String) {
+  feed(first: 3, after: $after) {
+    edges {
+      node {
+        id
+        title
+      }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}
