@@ -5,15 +5,15 @@
 Install Nginx. For exmaple on
 
 - Ubuntu
-`sudo apt-get install nginx`
+  `sudo apt-get install nginx`
 - MacOS
-`brew install nginx`
+  `brew install nginx`
 
 Edit hosts for `local.zahrada.sk` to point to `127.0.0.1`
 
 Add this line somewhere to `/etc/hosts`
-- `127.0.0.1 local.zahrada.sk`
 
+- `127.0.0.1 local.zahrada.sk`
 
 Run Nginx with custom config
 
@@ -35,3 +35,14 @@ npm start
 
 Go to http://local.zahrada.sk
 
+## Task
+
+![zadanie](./zadanie.png)
+
+#### Design
+
+![dizajn](./dizajn.png)
+
+#### Schema definition (or use f.e. https://altair.sirmuel.design/ with https://zahrada.sk/graphql endpoint)
+
+[feed.ts](./feed.ts)
