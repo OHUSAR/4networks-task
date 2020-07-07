@@ -39,7 +39,7 @@ Go to http://local.zahrada.sk
 
 1. Nacitat chybajuce data (existujuce su zadefinovane v `src/feed/feed.graphql`) a nastylovat prispevky podla dizajnu. Implementujte len samotne prispevky - nic okolo, ani search, ani bocne panely.
 
-2. V paticke by zfunkcnite tlacitko komentare. Po jeho stlaceni sa nacitaju (zo servera) komenentare a zobrazia sa pod prispevkom. Tieto komentare nemusia byt vobec nastylovane. Na opatovne stlacenie by sa mali skryt.
+2. V paticke zfunkcnite tlacitko komentare. Po jeho stlaceni sa nacitaju (zo servera) komenentare a zobrazia sa pod prispevkom. Tieto komentare nemusia byt vobec nastylovane. Na opatovne stlacenie by sa mali skryt.
 
 3. Pod prispevkami sfunkcnite tlacitko "Nacitat dalsie" s tym, ze po jeho stlaceni sa k exsitujucim prispevkom docita dalsich N.
 
