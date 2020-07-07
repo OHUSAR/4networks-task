@@ -39,10 +39,10 @@ Go to http://local.zahrada.sk
 
 ![zadanie](./zadanie.png)
 
+#### Relevant part of schema definition (or use f.e. https://altair.sirmuel.design/ with https://zahrada.sk/graphql endpoint)
+
+[feed.ts](./feed.ts)
+
 #### Design
 
 ![dizajn](./dizajn.png)
-
-#### Schema definition (or use f.e. https://altair.sirmuel.design/ with https://zahrada.sk/graphql endpoint)
-
-[feed.ts](./feed.ts)
