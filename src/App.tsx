@@ -1,6 +1,6 @@
 import React from "react";
 
-import Feed from "./feed/feed";
+import Feed from "./Feed";
 
 import "./App.css";
 

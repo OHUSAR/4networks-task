@@ -17,7 +17,7 @@ const client = new ApolloClient({
   cache,
   ssrForceFetchDelay: 500,
   link: createUploadLink({
-    uri: "//local.zahrada.sk/graphql",
+    uri: "/graphql",
     credentials: "same-origin",
     headers: {
       "Accept-Language": "sk-sk",

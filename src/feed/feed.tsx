@@ -1,12 +1,12 @@
-import React from "react";
-import { useQuery } from "@apollo/react-hooks";
+import React, { FC } from "react";
 import { loader } from "graphql.macro";
+import { useQuery } from "@apollo/react-hooks";
 
 import styles from "./feed.module.css";
 
 const query = loader("./feed.graphql");
 
-const Feed = () => {
+const Feed: FC = () => {
   const { data, loading, error } = useQuery(query);
 
   if (loading) return <p>Loading...</p>;
@@ -15,7 +15,9 @@ const Feed = () => {
   return (
     <div className={styles.wrapper}>
       {data.feed.edges.map((edge: any) => (
-        <div className={styles.post}>{JSON.stringify(edge.node)}</div>
+        <div key={edge.node.id} className={styles.post}>
+          {JSON.stringify(edge.node)}
+        </div>
       ))}
 
       <button

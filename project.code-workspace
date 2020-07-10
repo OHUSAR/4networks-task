@@ -1,0 +1,56 @@
+{
+  "folders": [{ "path": "." }],
+  "settings": {
+    // Eslint
+    "eslint.options": {
+      "configFile": ".eslintrc.js"
+    },
+    "eslint.alwaysShowStatus": true,
+    "eslint.packageManager": "yarn",
+    "eslint.enable": true,
+    // style
+    "stylelint.enable": true,
+    // Editor goodies
+    "files.defaultLanguage": "javascriptreact",
+    "editor.rulers": [100],
+
+    // search
+    "search.exclude": {
+      "**/.git": true,
+      "**/node_modules": true,
+      "**/build": true
+    },
+    // Hide
+    "files.exclude": {
+      "stylelint.config.js": true,
+      "commitlint.config.js": true,
+      "tsconfig.json": true,
+      ".seslintrc.js": true,
+      "node_modules": true,
+      ".prettierrc": true,
+      ".gitignore": true,
+      "yarn.lock": true,
+      "nginx.conf": true
+    },
+    // Prettier
+    "editor.formatOnSave": true,
+    // Line endings force UNIX
+    "files.eol": "\n",
+    "git.ignoreLimitWarning": true,
+    // workspace spell memory
+    "cSpell.words": []
+  },
+  // Recommended plugins
+  "extensions": {
+    "recommendations": [
+      "streetsidesoftware.code-spell-checker",
+      "vscode-icons-team.vscode-icons",
+      "editorconfig.editorconfig",
+      "stylelint.vscode-stylelint",
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "mikestead.dotenv",
+      "prisma.vscode-graphql"
+    ]
+  }
+}
