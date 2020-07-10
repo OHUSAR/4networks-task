@@ -1,10 +1,10 @@
-import React from "react";
+import React, { FC } from "react";
 
-import Feed from "./Feed";
+import Feed from "pages/Feed";
 
 import "./App.css";
 
-const App = () => {
+const App: FC = () => {
   return (
     <>
       <header className="header">

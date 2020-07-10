@@ -4,7 +4,7 @@ module.exports = function (app) {
   app.use(
     "/graphql",
     createProxyMiddleware({
-      target: "https://www.zahrada.sk/graphql",
+      target: process.env.DEV_GQL_ENDPOINT,
       changeOrigin: true,
     })
   );
