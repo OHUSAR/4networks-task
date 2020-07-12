@@ -1,0 +1,68 @@
+.post {
+  background: var(--palette-light);
+  flex-direction: column;
+  position: relative;
+  display: flex;
+  width: 100%;
+  border-radius: 0.625rem;
+}
+
+.post:not(:last-of-type) {
+  margin-bottom: 2rem;
+}
+
+.albumImages {
+  flex-direction: row;
+  overflow: hidden;
+  margin: 0 1rem;
+  display: flex;
+}
+
+.albumImages > img {
+  margin-right: 0.125rem;
+  height: 8.5rem;
+  width: auto;
+}
+
+.post > header {
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+  display: flex;
+}
+
+.post > header > div {
+  padding: 1rem;
+}
+
+.post > header > div > time {
+  align-items: center;
+  margin-top: 0.5rem;
+  display: flex;
+}
+
+.createdAtIcon {
+  fill: var(--palette-caption);
+  margin-right: 0.5rem;
+  height: 0.625rem;
+  width: 0.625rem;
+}
+
+.post > header > div > a {
+  color: var(--palette-primary);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.post > .header > img {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 0.25rem;
+}
+
+.content {
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}

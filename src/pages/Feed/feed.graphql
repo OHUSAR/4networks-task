@@ -3,12 +3,36 @@ query Feed($after: String) {
     edges {
       node {
         id
+        createdTime
+        postType
+        content
+        commentCount
+        likesCount
         title
+        slug
+        user {
+          href
+          profile {
+            avatar {
+              id
+              src
+            }
+            name
+          }
+        }
+        imagesCount
+        images(first: 5) {
+          edges {
+            node {
+              id
+              alt
+              photoFile {
+                src
+              }
+            }
+          }
+        }
       }
-    }
-    pageInfo {
-      hasNextPage
-      endCursor
     }
   }
 }

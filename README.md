@@ -39,3 +39,7 @@ Go to http://localhost:3000
 #### Design
 
 ![dizajn](./dizajn.png)
+
+## TODO:
+
+- babel graphql import plugin = at this moment we have to restart dev process when `.graphql` file is changed

@@ -2,6 +2,8 @@ import React, { FC } from "react";
 import { loader } from "graphql.macro";
 import { useQuery } from "@apollo/react-hooks";
 
+import Post from "components/Post";
+
 import styles from "./feed.module.css";
 
 const query = loader("./feed.graphql");
@@ -13,11 +15,9 @@ const Feed: FC = () => {
   if (error) return <p>Error</p>;
 
   return (
-    <div className={styles.wrapper}>
+    <section className={styles.wrapper}>
       {data.feed.edges.map((edge: any) => (
-        <div key={edge.node.id} className={styles.post}>
-          {JSON.stringify(edge.node)}
-        </div>
+        <Post key={edge.node.id} post={edge.node} />
       ))}
 
       <button
@@ -28,7 +28,7 @@ const Feed: FC = () => {
       >
         Načítať ďalšie
       </button>
-    </div>
+    </section>
   );
 };
 

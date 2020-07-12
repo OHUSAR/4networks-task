@@ -1,0 +1,4053 @@
+yarn run v1.22.4
+$ /Users/serusko/Dev/4networks-task/node_modules/.bin/get-graphql-schema https://www.zahrada.sk/graphql
+input AcceptFriendInvitationInput {
+  userId: ID
+  confirmationKey: String
+  clientMutationId: String
+}
+
+type AcceptFriendInvitationPayload {
+  user: UserNode
+  clientMutationId: String
+}
+
+input AddImageInput {
+  photoFileId: ID!
+  title: String
+}
+
+input AddModeratorsInput {
+  id: ID!
+  moderators: [String]!
+  clientMutationId: String
+}
+
+type AddModeratorsPayload {
+  group: GroupNode
+  errors: [String]
+  clientMutationId: String
+}
+
+input AddPostImagesInput {
+  postId: ID!
+  images: [AddImageInput]
+  clientMutationId: String
+}
+
+type AddPostImagesPayload {
+  post: PostNode
+  clientMutationId: String
+}
+
+input AddToStaffPickSuggestionsInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type AddToStaffPickSuggestionsPayload {
+  errors: [String]
+  post: PostNode
+  clientMutationId: String
+}
+
+input BlockGroupMemberInput {
+  groupId: ID!
+  username: String!
+  reason: String!
+  clientMutationId: String
+}
+
+type BlockGroupMemberPayload {
+  group: GroupNode
+  clientMutationId: String
+}
+
+input BlockPostInput {
+  id: ID!
+  rule: ID!
+  comment: String
+  clientMutationId: String
+}
+
+type BlockPostPayload {
+  post: PostNode
+  errors: String
+  clientMutationId: String
+}
+
+input BlockProductInput {
+  id: ID!
+  rule: ID!
+  comment: String
+  clientMutationId: String
+}
+
+type BlockProductPayload {
+  product: ProductNode
+  errors: String
+  clientMutationId: String
+}
+
+type BrandNode implements Node {
+  name: String!
+  nameSearch: String!
+  slug: String!
+  createdTime: DateTime!
+  vendor: VendorNode
+
+  """The ID of the object."""
+  id: ID!
+}
+
+type BrandNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [BrandNodeEdge]!
+}
+
+"""A Relay edge containing a `BrandNode` and its cursor."""
+type BrandNodeEdge {
+  """The item at the end of the edge"""
+  node: BrandNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type BucketESNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  key: String
+  docCount: Int
+  background: String
+}
+
+input BuyerSellerRemoveInput {
+  buyerId: ID
+  clientMutationId: String
+}
+
+type BuyerSellerRemovePayload {
+  success: Boolean
+  clientMutationId: String
+}
+
+input BuyerSellerRestoreInput {
+  buyerId: ID
+  clientMutationId: String
+}
+
+type BuyerSellerRestorePayload {
+  success: Boolean
+  clientMutationId: String
+}
+
+input CancelFriendInvitationInput {
+  userId: ID
+  clientMutationId: String
+}
+
+type CancelFriendInvitationPayload {
+  user: UserNode
+  clientMutationId: String
+}
+
+input CancelRecurringPaymentInput {
+  vendor: ID
+  clientMutationId: String
+}
+
+type CancelRecurringPaymentPayload {
+  vendor: VendorNode
+  clientMutationId: String
+}
+
+type CardPaymentNode implements Node {
+  createdOn: DateTime!
+  status: Int!
+  remoteStatus: Int
+  text: String!
+  cardNum: String
+  cardExpiry: String
+  paidOn: DateTime
+  orderNum: Int
+  vendor: VendorNode
+  invoice: InvoiceNode
+  recurringFrom: CardPaymentNode
+  period: Int!
+
+  """The ID of the object."""
+  id: ID!
+  value: Float
+  currency: String
+}
+
+type CatalogCategoryConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CatalogCategoryEdge]!
+}
+
+"""A Relay edge containing a `CatalogCategory` and its cursor."""
+type CatalogCategoryEdge {
+  """The item at the end of the edge"""
+  node: CatalogCategoryNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type CatalogCategoryGroupNode implements Node {
+  gettext: String!
+  row: Int
+  column: Int
+
+  """The ID of the object."""
+  id: ID!
+  name: String
+}
+
+type CatalogCategoryGroupNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CatalogCategoryGroupNodeEdge]!
+}
+
+"""A Relay edge containing a `CatalogCategoryGroupNode` and its cursor."""
+type CatalogCategoryGroupNodeEdge {
+  """The item at the end of the edge"""
+  node: CatalogCategoryGroupNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type CatalogCategoryNode implements Node {
+  gettext: String!
+  servers(before: String, after: String, first: Int, last: Int): ServerNodeConnection
+
+  """The ID of the object."""
+  id: ID!
+  slug: String
+  vendorCount: Int
+  vendors(countyIds: [ID], orderBy: VendorOrderingFilterEnum, before: String, after: String, first: Int, last: Int): VendorConnection
+  parentCategory: CatalogCategoryGroupNode
+  name: String
+}
+
+type CatalogCategoryNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CatalogCategoryNodeEdge]!
+}
+
+"""A Relay edge containing a `CatalogCategoryNode` and its cursor."""
+type CatalogCategoryNodeEdge {
+  """The item at the end of the edge"""
+  node: CatalogCategoryNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type CategoryPropertiesValuesNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  propertiesValues: [CategoryPropertyValuesNode]
+}
+
+type CategoryPropertyValuesNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  property: String
+  propertyGettext: String
+  values: [ValueNode]
+}
+
+input ChangeUserPasswordInput {
+  id: ID!
+  oldPassword: String!
+  newPassword: String!
+  clientMutationId: String
+}
+
+type ChangeUserPasswordPayload {
+  user: UserNode
+  clientMutationId: String
+}
+
+type CheckPassword {
+  correctPassword: Boolean
+}
+
+type CollectionImageConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CollectionImageEdge]!
+}
+
+"""A Relay edge containing a `CollectionImage` and its cursor."""
+type CollectionImageEdge {
+  """The item at the end of the edge"""
+  node: CollectionImageNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type CollectionImageNode implements Node & Likeable {
+  collection: CollectionNode!
+  image: ImageNode!
+  createdTime: DateTime
+
+  """The ID of the object."""
+  id: ID!
+  likesCount: Int
+  isLikedByUser(user: ID!): Boolean
+  isLikedByViewer: Boolean
+  likers(before: String, after: String, first: Int, last: Int, username: String, isStaff: Boolean, inactive: Boolean, includeVendors: Boolean, usernameContains: String, abroad: Boolean, project: ID, county: ID, orderBy: UserOrderingFilterEnum): UserNodeConnection
+}
+
+type CollectionImageNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CollectionImageNodeEdge]!
+}
+
+"""A Relay edge containing a `CollectionImageNode` and its cursor."""
+type CollectionImageNodeEdge {
+  """The item at the end of the edge"""
+  node: CollectionImageNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type CollectionNode implements Node & Likeable {
+  photoblog: PhotoBlogNode!
+  title: String!
+  content: String!
+  slug: String!
+  createdOn: DateTime!
+  commentCount: Int!
+  subscribers(before: String, after: String, first: Int, last: Int, username: String, isStaff: Boolean, inactive: Boolean, includeVendors: Boolean, usernameContains: String, abroad: Boolean, project: ID, county: ID, orderBy: UserOrderingFilterEnum): UserNodeConnection
+
+  """The ID of the object."""
+  id: ID!
+  likesCount: Int
+  isLikedByUser(user: ID!): Boolean
+  isLikedByViewer: Boolean
+  likers(before: String, after: String, first: Int, last: Int, username: String, isStaff: Boolean, inactive: Boolean, includeVendors: Boolean, usernameContains: String, abroad: Boolean, project: ID, county: ID, orderBy: UserOrderingFilterEnum): UserNodeConnection
+  images(before: String, after: String, first: Int, last: Int): CollectionImageConnection
+  href: String
+  isNew: Boolean
+  rawImages(before: String, after: String, first: Int, last: Int): ImageConnection
+  imagesCount: Int
+  hasImage(imageId: ID!): Boolean
+  lastModified: DateTime
+}
+
+type CollectionNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CollectionNodeEdge]!
+}
+
+"""A Relay edge containing a `CollectionNode` and its cursor."""
+type CollectionNodeEdge {
+  """The item at the end of the edge"""
+  node: CollectionNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+enum CollectionOrderingFilterEnum {
+  """ORDER_BY_TITLE"""
+  TITLE
+
+  """ORDER_BY_TITLE"""
+  TITLE_DESC
+
+  """Zoradiť od najnovšej"""
+  CREATED_ON
+
+  """Zoradiť od najnovšej"""
+  CREATED_ON_DESC
+
+  """Zoradiť od najnovšej"""
+  LAST_MODIFIED
+
+  """Zoradiť od najnovšej"""
+  LAST_MODIFIED_DESC
+}
+
+type CommentConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CommentEdge]!
+}
+
+"""A Relay edge containing a `Comment` and its cursor."""
+type CommentEdge {
+  """The item at the end of the edge"""
+  node: CommentNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+input CommentMutationInput {
+  id: ID!
+  comment: String!
+  photoFiles: [ID]
+  clientMutationId: String
+}
+
+type CommentMutationPayload {
+  comment: CommentNode
+  errors: [String]
+  clientMutationId: String
+}
+
+type CommentNode implements Node & Likeable {
+  post: PostNode
+  image: ImageNode
+  comment: String
+  author: String
+  user: UserNode
+  createdTime: DateTime!
+
+  """The ID of the object."""
+  id: ID!
+  likesCount: Int
+  isLikedByUser(user: ID!): Boolean
+  isLikedByViewer: Boolean
+  likers(before: String, after: String, first: Int, last: Int, username: String, isStaff: Boolean, inactive: Boolean, includeVendors: Boolean, usernameContains: String, abroad: Boolean, project: ID, county: ID, orderBy: UserOrderingFilterEnum): UserNodeConnection
+  images(before: String, after: String, first: Int, last: Int): PhotoFileConnection
+}
+
+type CommentNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CommentNodeEdge]!
+}
+
+"""A Relay edge containing a `CommentNode` and its cursor."""
+type CommentNodeEdge {
+  """The item at the end of the edge"""
+  node: CommentNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+enum CommentOrderingFilterEnum {
+  """najstaršieho"""
+  CREATED_TIME
+
+  """najstaršieho"""
+  CREATED_TIME_DESC
+}
+
+input ComplainCommentInput {
+  id: ID!
+  comment: String
+  clientMutationId: String
+}
+
+type ComplainCommentPayload {
+  errors: [String]
+  clientMutationId: String
+}
+
+input ComplainImageInput {
+  id: ID!
+  comment: String
+  clientMutationId: String
+}
+
+type ComplainImagePayload {
+  errors: [String]
+  clientMutationId: String
+}
+
+input ComplainPostInput {
+  id: ID!
+  comment: String
+  clientMutationId: String
+}
+
+type ComplainPostPayload {
+  errors: [String]
+  clientMutationId: String
+}
+
+union Complaintable = ThreadNode | MessageNode | PostNode | ImageNode | CommentNode | ProductNode
+
+type ComplaintNode implements Node {
+  targetType: ContentTypeNode
+  targetId: Int!
+  server: ServerNode
+  user: UserNode
+  comment: String!
+  time: DateTime!
+  deleteOn: DateTime
+
+  """The ID of the object."""
+  id: ID!
+  target: Complaintable
+}
+
+type ComplaintNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ComplaintNodeEdge]!
+}
+
+"""A Relay edge containing a `ComplaintNode` and its cursor."""
+type ComplaintNodeEdge {
+  """The item at the end of the edge"""
+  node: ComplaintNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ContentTypeNode implements Node {
+  model: String!
+
+  """The ID of the object."""
+  id: ID!
+  modelClass: String
+}
+
+type ContestNode implements Node {
+  server: ServerNode!
+  title: String!
+  url: String!
+  logo: PhotoFileNode
+  isActive: Boolean!
+
+  """The ID of the object."""
+  id: ID!
+}
+
+type ContestNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ContestNodeEdge]!
+}
+
+"""A Relay edge containing a `ContestNode` and its cursor."""
+type ContestNodeEdge {
+  """The item at the end of the edge"""
+  node: ContestNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type CountableConnectionTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CountableConnectionTypeEdge]!
+  totalCount: Int
+}
+
+"""A Relay edge containing a `CountableConnectionType` and its cursor."""
+type CountableConnectionTypeEdge {
+  """The item at the end of the edge"""
+  node: UserBrandNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type CountryNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  name: String!
+  locale: String
+  currency: String
+  currency2: String
+  countySet(before: String, after: String, first: Int, last: Int): CountyNodeConnection
+  serverSet(before: String, after: String, first: Int, last: Int): ServerNodeConnection
+  userCountry(before: String, after: String, first: Int, last: Int): UserProfileNodeConnection
+  bazaarCountry(before: String, after: String, first: Int, last: Int): UserProfileNodeConnection
+  weddingCountry(before: String, after: String, first: Int, last: Int): WeddingNodeConnection
+  gardenSet(before: String, after: String, first: Int, last: Int): GardenNodeConnection
+  livingSet(before: String, after: String, first: Int, last: Int): LivingNodeConnection
+  customerAddressSet(before: String, after: String, first: Int, last: Int): CustomerNodeConnection
+  customerPostAddressSet(before: String, after: String, first: Int, last: Int): CustomerNodeConnection
+  groupSet(before: String, after: String, first: Int, last: Int): GroupNodeConnection
+  invoiceSet(before: String, after: String, first: Int, last: Int): InvoiceNodeConnection
+}
+
+type CountryNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CountryNodeEdge]!
+}
+
+"""A Relay edge containing a `CountryNode` and its cursor."""
+type CountryNodeEdge {
+  """The item at the end of the edge"""
+  node: CountryNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type CountyNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  name: String!
+  country: CountryNode!
+  userCounty(before: String, after: String, first: Int, last: Int): UserProfileNodeConnection
+  bazaarCounty(before: String, after: String, first: Int, last: Int): UserProfileNodeConnection
+  weddingCounty(before: String, after: String, first: Int, last: Int): WeddingNodeConnection
+  gardenSet(before: String, after: String, first: Int, last: Int): GardenNodeConnection
+  livingSet(before: String, after: String, first: Int, last: Int): LivingNodeConnection
+  productSet(before: String, after: String, first: Int, last: Int): ProductNodeConnection
+  groupSet(before: String, after: String, first: Int, last: Int): GroupNodeConnection
+  vendorSet(before: String, after: String, first: Int, last: Int): VendorNodeConnection
+  usersCount: Int!
+}
+
+type CountyNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CountyNodeEdge]!
+}
+
+"""A Relay edge containing a `CountyNode` and its cursor."""
+type CountyNodeEdge {
+  """The item at the end of the edge"""
+  node: CountyNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+input CreateCollectionImageInput {
+  imageId: ID
+  collectionId: ID
+  newCollectionTitle: String
+  clientMutationId: String
+}
+
+type CreateCollectionImagePayload {
+  collectionImage: CollectionImageNode
+  clientMutationId: String
+}
+
+input CreateGroupInput {
+  name: String
+  description: String
+  privacy: GroupPrivacy
+  moderators: [String]
+  clientMutationId: String
+}
+
+type CreateGroupPayload {
+  errors: [String]
+  group: GroupNode
+  clientMutationId: String
+}
+
+input CreateMailAttachmentsInput {
+  files: [Upload]!
+  clientMutationId: String
+}
+
+type CreateMailAttachmentsPayload {
+  attachments: [MailAttachmentNode]
+  clientMutationId: String
+}
+
+input CreateMailInput {
+  to: [String]
+  subject: String
+  body: String
+  attachmentsIds: [String]
+  clientMutationId: String
+}
+
+type CreateMailPayload {
+  mail: MailNode
+  clientMutationId: String
+}
+
+input CreateOrUpdateContestInput {
+  isActive: Boolean
+  server: ID
+  title: String
+  url: String
+  logo: Upload
+  clientMutationId: String
+}
+
+type CreateOrUpdateContestPayload {
+  contest: ContestNode
+  clientMutationId: String
+}
+
+input CreateOrUpdateFeaturedContentInput {
+  isActive: Boolean
+  server: ID
+  title: String
+  threads: String
+  albums: String
+  articles: String
+  groups: String
+  clientMutationId: String
+}
+
+type CreateOrUpdateFeaturedContentPayload {
+  featuredContent: FeaturedContentNode
+  clientMutationId: String
+}
+
+input CreatePairingInput {
+  objectId1: ID
+  objectId2: ID
+  clientMutationId: String
+}
+
+type CreatePairingPayload {
+  pairing: PairingNode
+  clientMutationId: String
+}
+
+input CreatePairingsInput {
+  globalIds: [ID]
+  clientMutationId: String
+}
+
+type CreatePairingsPayload {
+  pairings: [PairingNode]
+  clientMutationId: String
+}
+
+input CreatePostMutationInput {
+  isVendor: String
+  isLikedByMe: String
+  isStaffpick: Boolean
+  perexImages: String
+  newImageCount: String
+  user: String
+  id: ID
+  title: String
+  postType: PostType
+  postCategory: PostCategory
+  imageCount: Int
+  createdTime: DateTime
+  lastChangeTime: DateTime
+  likesCount: Int
+  commentCount: Int
+  content: String
+  visibility: PostVisibility
+  group: ID
+  titleImageId: Int
+  photoFileIds: [Int]
+  selectionItemIds: [String]
+  brideName: String
+  groomName: String
+  weddingDate: DateTime
+  weddingCounty: ID
+  weddingCountry: ID
+  weddingCity: String
+  clientMutationId: String
+}
+
+type CreatePostMutationPayload {
+  """May contain more than one error for same field."""
+  errors: [ErrorType]
+  post: PostNode
+  clientMutationId: String
+}
+
+input CreateReportedBugInput {
+  comment: String
+  photoFileId: ID
+  email: String
+  pathname: String
+  clientMutationId: String
+}
+
+type CreateReportedBugPayload {
+  reportedBug: ReportedBugNode
+  clientMutationId: String
+}
+
+input CreateSelectionItemInput {
+  translationKey: String!
+  serverId: ID
+  clientMutationId: String
+}
+
+type CreateSelectionItemPayload {
+  selectionItem: SelectionItemNode
+  errors: [String]
+  clientMutationId: String
+}
+
+input CreateUserBrandInput {
+  serviceId: ID
+  brand: String
+  description: String
+  clientMutationId: String
+}
+
+type CreateUserBrandPayload {
+  userBrand: UserBrandNode
+  clientMutationId: String
+}
+
+type CustomerNode implements Node {
+  name: String!
+  user: ViewerNode
+  address: String!
+  city: String!
+  zip: String!
+  country: CountryNode!
+  regid: String!
+  vatid: String
+  taxid: String
+  contactPerson: String
+  email: String
+  invoiceEmail: String
+
+  """The ID of the object."""
+  id: ID!
+  isFilled: Boolean
+}
+
+type CustomerNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CustomerNodeEdge]!
+}
+
+"""A Relay edge containing a `CustomerNode` and its cursor."""
+type CustomerNodeEdge {
+  """The item at the end of the edge"""
+  node: CustomerNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""
+The `Date` scalar type represents a Date
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar Date
+
+"""
+The `DateTime` scalar type represents a DateTime
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar DateTime
+
+input DeleteGroupCoverPhotoInput {
+  id: ID
+  clientMutationId: String
+}
+
+type DeleteGroupCoverPhotoPayload {
+  group: GroupNode
+  clientMutationId: String
+}
+
+input DeleteMessageComplaintsInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type DeleteMessageComplaintsPayload {
+  message: MessageNode
+  errors: String
+  clientMutationId: String
+}
+
+input DeleteMessageInput {
+  id: ID!
+  rule: ID!
+  comment: String
+  clientMutationId: String
+}
+
+type DeleteMessagePayload {
+  message: MessageNode
+  errors: String
+  clientMutationId: String
+}
+
+input DeletePostComplaintsInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type DeletePostComplaintsPayload {
+  post: PostNode
+  errors: String
+  clientMutationId: String
+}
+
+input DeleteProductComplaintsInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type DeleteProductComplaintsPayload {
+  product: ProductNode
+  errors: String
+  clientMutationId: String
+}
+
+input DeleteThreadComplaintsInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type DeleteThreadComplaintsPayload {
+  thread: ThreadNode
+  errors: String
+  clientMutationId: String
+}
+
+input DeleteThreadInput {
+  id: ID!
+  rule: ID!
+  comment: String
+  clientMutationId: String
+}
+
+type DeleteThreadPayload {
+  thread: ThreadNode
+  errors: String
+  clientMutationId: String
+}
+
+input EditMessageInput {
+  id: ID!
+  body: String
+  rule: ID!
+  comment: String
+  clientMutationId: String
+}
+
+type EditMessagePayload {
+  message: MessageNode
+  errors: String
+  clientMutationId: String
+}
+
+input EditThreadInput {
+  id: ID!
+  title: String
+  firstMessageBody: String
+  rule: ID!
+  comment: String
+  clientMutationId: String
+}
+
+type EditThreadPayload {
+  thread: ThreadNode
+  errors: String
+  clientMutationId: String
+}
+
+type ErrorType {
+  field: String!
+  messages: [String!]!
+}
+
+type FavoritedImageNode implements Node {
+  image: ImageNode!
+  user: ViewerNode
+  createdTime: DateTime!
+
+  """The ID of the object."""
+  id: ID!
+}
+
+type FavoritedImageNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [FavoritedImageNodeEdge]!
+}
+
+"""A Relay edge containing a `FavoritedImageNode` and its cursor."""
+type FavoritedImageNodeEdge {
+  """The item at the end of the edge"""
+  node: FavoritedImageNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type FeaturedContentNode implements Node {
+  server: ServerNode!
+  title: String!
+  isActive: Boolean!
+
+  """The ID of the object."""
+  id: ID!
+  threads: [ThreadNode]
+  articles: [PostNode]
+  albums: [PostNode]
+  groups: [GroupNode]
+  threadsRaw: String
+  articlesRaw: String
+  albumsRaw: String
+  groupsRaw: String
+}
+
+type FeaturedContentNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [FeaturedContentNodeEdge]!
+}
+
+"""A Relay edge containing a `FeaturedContentNode` and its cursor."""
+type FeaturedContentNodeEdge {
+  """The item at the end of the edge"""
+  node: FeaturedContentNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+enum FlagsCategory {
+  FORUM
+  PHOTOBLOG
+  BAZAAR
+}
+
+enum FriendStatus {
+  NOT_FRIENDS
+  REQUEST_PENDING
+  WAITING_FOR_VIEWER_CONFIRMATION
+  FRIENDS
+}
+
+type GardenNode implements Node & SiteDetail {
+  info: ID
+  experiences: String
+
+  """The ID of the object."""
+  id: ID!
+}
+
+type GardenNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [GardenNodeEdge]!
+}
+
+"""A Relay edge containing a `GardenNode` and its cursor."""
+type GardenNodeEdge {
+  """The item at the end of the edge"""
+  node: GardenNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""An enumeration."""
+enum GroupApprovalType {
+  """AUTO_APPROVAL"""
+  A_0
+
+  """MODERATOR_APPROVAL"""
+  A_1
+}
+
+type GroupConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [GroupEdge]!
+}
+
+"""A Relay edge containing a `Group` and its cursor."""
+type GroupEdge {
+  """The item at the end of the edge"""
+  node: GroupNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""An enumeration."""
+enum GroupGroupType {
+  """DOMAIN_GROUP"""
+  A_0
+
+  """USER_GROUP"""
+  A_1
+}
+
+type GroupMemberConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [GroupMemberEdge]!
+}
+
+"""A Relay edge containing a `GroupMember` and its cursor."""
+type GroupMemberEdge {
+  """The item at the end of the edge"""
+  node: GroupMemberNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type GroupMemberNode implements Node {
+  user: UserNode
+  role: MemberRole
+  createdTime: DateTime!
+
+  """The ID of the object."""
+  id: ID!
+  postsCount: Int
+  imagesCount: Int
+}
+
+type GroupMemberNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [GroupMemberNodeEdge]!
+}
+
+"""A Relay edge containing a `GroupMemberNode` and its cursor."""
+type GroupMemberNodeEdge {
+  """The item at the end of the edge"""
+  node: GroupMemberNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type GroupNode implements Node {
+  name: String!
+  description: String
+  rules: String
+  groupType: GroupGroupType!
+  privacyType: GroupPrivacy
+  approvalType: GroupApprovalType!
+  user: UserNode
+  county: CountyNode
+  country: CountryNode
+  avatar: PhotoFileNode
+  coverPhoto: PhotoFileNode
+  membersCount: Int!
+  postsCount: Int!
+  likesCount: Int!
+  commentCount: Int!
+  lastPostTime: DateTime
+  lastVisitTime: DateTime
+  createdTime: DateTime!
+
+  """The ID of the object."""
+  id: ID!
+  members(role: MemberRole, before: String, after: String, first: Int, last: Int): GroupMemberConnection
+  feed(search: String, slug: String, hashtag: String, before: String, after: String, first: Int, last: Int): PostConnection
+  images(before: String, after: String, first: Int, last: Int): ImageConnection
+  imagesCount: Int
+  isJoinedByViewer: Boolean
+  isSubscribedByViewer: Boolean
+  viewerMemberRole: MemberRole
+  href: String!
+  viewerUnreadCount: String
+}
+
+type GroupNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [GroupNodeEdge]!
+}
+
+"""A Relay edge containing a `GroupNode` and its cursor."""
+type GroupNodeEdge {
+  """The item at the end of the edge"""
+  node: GroupNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+enum GroupOrderingFilterEnum {
+  """najstaršieho"""
+  CREATED_TIME
+
+  """najstaršieho"""
+  CREATED_TIME_DESC
+
+  """ORDER_BY_MEMBER_COUNT"""
+  MEMBERS_COUNT
+
+  """ORDER_BY_MEMBER_COUNT"""
+  MEMBERS_COUNT_DESC
+
+  """ORDER_BY_POSTS_COUNT"""
+  POSTS_COUNT
+
+  """ORDER_BY_POSTS_COUNT"""
+  POSTS_COUNT_DESC
+
+  """Zoradiť podľa dátumu posledného príspevku"""
+  LAST_POST_TIME
+
+  """Zoradiť podľa dátumu posledného príspevku"""
+  LAST_POST_TIME_DESC
+}
+
+enum GroupPrivacy {
+  GROUP_PRIVACY_PRIVATE
+  GROUP_PRIVACY_PUBLIC
+}
+
+type HashtagNode implements Node {
+  hashtag: String!
+
+  """The ID of the object."""
+  id: ID!
+  itemCount: Int
+}
+
+type HashtagNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [HashtagNodeEdge]!
+}
+
+"""A Relay edge containing a `HashtagNode` and its cursor."""
+type HashtagNodeEdge {
+  """The item at the end of the edge"""
+  node: HashtagNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ImageConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ImageEdge]!
+}
+
+"""A Relay edge containing a `Image` and its cursor."""
+type ImageEdge {
+  """The item at the end of the edge"""
+  node: ImageNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ImageNode implements Node & Likeable {
+  LikesCount: Int!
+  LikerIds: String
+
+  """The ID of the object."""
+  id: ID!
+  post: PostNode!
+  title: String
+  photoFile: PhotoFileNode
+  position: Int
+  createdTime: DateTime!
+  deleteOnTime: DateTime
+  commentCount: Int!
+  subscribers(before: String, after: String, first: Int, last: Int): ViewerNodeConnection
+  collectionimageSet(before: String, after: String, first: Int, last: Int): CollectionImageNodeConnection
+  commentSet(before: String, after: String, first: Int, last: Int): CommentNodeConnection
+  favoritedimageSet(before: String, after: String, first: Int, last: Int): FavoritedImageNodeConnection
+  likesCount: Int
+  isLikedByUser(user: ID!): Boolean
+  isLikedByViewer: Boolean
+  likers(before: String, after: String, first: Int, last: Int, username: String, isStaff: Boolean, inactive: Boolean, includeVendors: Boolean, usernameContains: String, abroad: Boolean, project: ID, county: ID, orderBy: UserOrderingFilterEnum): UserNodeConnection
+  isSubscribedByViewer: Boolean
+  isCreatedByViewer: Boolean
+  href: String
+  nextHref: String
+  prevHref: String
+  inViewerCollections: Boolean
+  alt: String
+}
+
+type ImageNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ImageNodeEdge]!
+}
+
+"""A Relay edge containing a `ImageNode` and its cursor."""
+type ImageNodeEdge {
+  """The item at the end of the edge"""
+  node: ImageNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+input InviteUserToGroupInput {
+  groupId: ID!
+  username: String!
+  clientMutationId: String
+}
+
+type InviteUserToGroupPayload {
+  user: UserNode
+  clientMutationId: String
+}
+
+type InvoiceConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [InvoiceEdge]!
+}
+
+"""A Relay edge containing a `Invoice` and its cursor."""
+type InvoiceEdge {
+  """The item at the end of the edge"""
+  node: InvoiceNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type InvoiceNode implements Node {
+  number: Float
+  dateDelivered: Date!
+
+  """The ID of the object."""
+  id: ID!
+  name: String
+  desc: String
+  amount: String
+  href: String
+}
+
+type InvoiceNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [InvoiceNodeEdge]!
+}
+
+"""A Relay edge containing a `InvoiceNode` and its cursor."""
+type InvoiceNodeEdge {
+  """The item at the end of the edge"""
+  node: InvoiceNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+input JoinGroupInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type JoinGroupPayload {
+  group: GroupNode
+  errors: [String]
+  clientMutationId: String
+}
+
+"""
+Allows use of a JSON String for input / output from the GraphQL schema.
+
+Use of this type is *not recommended* as you lose the benefits of having a defined, static
+schema (one of the key benefits of GraphQL).
+"""
+scalar JSONString
+
+input LeaveGroupInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type LeaveGroupPayload {
+  group: GroupNode
+  errors: [String]
+  clientMutationId: String
+}
+
+interface Likeable {
+  likesCount: Int
+  isLikedByUser(user: ID!): Boolean
+  isLikedByViewer: Boolean
+  likers(before: String, after: String, first: Int, last: Int, username: String, isStaff: Boolean, inactive: Boolean, includeVendors: Boolean, usernameContains: String, abroad: Boolean, project: ID, county: ID, orderBy: UserOrderingFilterEnum): UserNodeConnection
+}
+
+input LikeCollectionInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type LikeCollectionPayload {
+  errors: [String]
+  collection: CollectionNode
+  clientMutationId: String
+}
+
+input LikeCommentInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type LikeCommentPayload {
+  errors: [String]
+  comment: CommentNode
+  clientMutationId: String
+}
+
+input LikeImageInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type LikeImagePayload {
+  errors: [String]
+  image: ImageNode
+  clientMutationId: String
+}
+
+input LikePhotoBlogInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type LikePhotoBlogPayload {
+  errors: [String]
+  photoBlog: PhotoBlogNode
+  clientMutationId: String
+}
+
+input LikePostInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type LikePostPayload {
+  errors: [String]
+  post: PostNode
+  clientMutationId: String
+}
+
+type LivingNode implements Node & SiteDetail {
+  info: ID
+  experiences: String
+
+  """The ID of the object."""
+  id: ID!
+}
+
+type LivingNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [LivingNodeEdge]!
+}
+
+"""A Relay edge containing a `LivingNode` and its cursor."""
+type LivingNodeEdge {
+  """The item at the end of the edge"""
+  node: LivingNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+input LockThreadInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type LockThreadPayload {
+  thread: ThreadNode
+  errors: String
+  clientMutationId: String
+}
+
+type LoginMutation {
+  status: LoginStatus
+}
+
+enum LoginStatus {
+  SUCCESS
+  INVALID_CRED
+  CROSS
+  NOT_VERIFIED
+}
+
+type MailAttachmentConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [MailAttachmentEdge]!
+}
+
+"""A Relay edge containing a `MailAttachment` and its cursor."""
+type MailAttachmentEdge {
+  """The item at the end of the edge"""
+  node: MailAttachmentNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type MailAttachmentNode implements Node {
+  user: ViewerNode!
+  originalFilename: String
+  mimeType: String!
+  meta: String
+  createdTime: DateTime!
+
+  """The ID of the object."""
+  id: ID!
+  downloadUrl: String
+}
+
+type MailAttachmentNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [MailAttachmentNodeEdge]!
+}
+
+"""A Relay edge containing a `MailAttachmentNode` and its cursor."""
+type MailAttachmentNodeEdge {
+  """The item at the end of the edge"""
+  node: MailAttachmentNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+enum MailboxType {
+  INBOX
+  OUTBOX
+  FAVOURITE
+}
+
+type MailNode implements Node {
+  subject: String!
+  sentDate: DateTime!
+  senderName: String!
+
+  """The ID of the object."""
+  id: ID!
+  isStarred: Boolean
+  unread: Boolean
+  body: String
+  users(recepients: Boolean, before: String, after: String, first: Int, last: Int): UserConnection
+  recipientsNames: String
+  attachments(before: String, after: String, first: Int, last: Int): MailAttachmentConnection
+  sender: UserNode
+  recipients: [UserNode]
+}
+
+type MailNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [MailNodeEdge]!
+}
+
+"""A Relay edge containing a `MailNode` and its cursor."""
+type MailNodeEdge {
+  """The item at the end of the edge"""
+  node: MailNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+enum MemberRole {
+  MEMBER_ROLE_MEMBER
+  MEMBER_ROLE_MODERATOR
+  MEMBER_ROLE_CREATOR
+  MEMBER_ROLE_NON_MEMBER
+  MEMBER_ROLE_BLOCKED
+}
+
+type MessageNode implements Node {
+  body: String!
+  time: DateTime!
+  user: ViewerNode!
+  editOn: DateTime
+
+  """The ID of the object."""
+  id: ID!
+  likesCount: Int
+}
+
+type MessageNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [MessageNodeEdge]!
+}
+
+"""A Relay edge containing a `MessageNode` and its cursor."""
+type MessageNodeEdge {
+  """The item at the end of the edge"""
+  node: MessageNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type Mutation {
+  buyerSellerRemove(input: BuyerSellerRemoveInput!): BuyerSellerRemovePayload
+  buyerSellerRestore(input: BuyerSellerRestoreInput!): BuyerSellerRestorePayload
+  updateWeddingTodolist(input: WeddingTodoListMutationInput!): WeddingTodoListMutationPayload
+  createUserBrand(input: CreateUserBrandInput!): CreateUserBrandPayload
+  updateUserBrand(input: UpdateUserBrandInput!): UpdateUserBrandPayload
+  removeUserBrand(input: RemoveUserBrandInput!): RemoveUserBrandPayload
+  createPairing(input: CreatePairingInput!): CreatePairingPayload
+  removePairing(input: RemovePairingInput!): RemovePairingPayload
+  createPairings(input: CreatePairingsInput!): CreatePairingsPayload
+  removePairings(input: RemovePairingsInput!): RemovePairingsPayload
+  createMailAttachments(input: CreateMailAttachmentsInput!): CreateMailAttachmentsPayload
+  removeMailAttachment(input: RemoveMailAttachmentInput!): RemoveMailAttachmentPayload
+  createMail(input: CreateMailInput!): CreateMailPayload
+  removeMail(input: RemoveMailInput!): RemoveMailPayload
+  updateMailStarred(input: UpdateMailStarredInput!): UpdateMailStarredPayload
+  updateMailUnread(input: UpdateMailUnreadInput!): UpdateMailUnreadPayload
+  payment(input: PaymentInput!): PaymentPayload
+  priceForVendor(input: PriceForVendorInput!): PriceForVendorPayload
+  cancelRecurringPayment(input: CancelRecurringPaymentInput!): CancelRecurringPaymentPayload
+  registerVendor(input: RegisterVendorInput!): RegisterVendorPayload
+  updateCustomer(input: UpdateCustomerInput!): UpdateCustomerPayload
+  updateVendorInformation(input: UpdateVendorInformationInput!): UpdateVendorInformationPayload
+  updateVendorLogo(input: UpdateVendorLogoInput!): UpdateVendorLogoPayload
+  updateVendorAbout(input: UpdateVendorAboutInput!): UpdateVendorAboutPayload
+  updateVendorVideos(input: UpdateVendorVideosInput!): UpdateVendorVideosPayload
+  createOrUpdateFeaturedContent(input: CreateOrUpdateFeaturedContentInput!): CreateOrUpdateFeaturedContentPayload
+  createOrUpdateContest(input: CreateOrUpdateContestInput!): CreateOrUpdateContestPayload
+  removeContestLogo(input: RemoveContestLogoInput!): RemoveContestLogoPayload
+  createReportedBug(input: CreateReportedBugInput!): CreateReportedBugPayload
+  blockPost(input: BlockPostInput!): BlockPostPayload
+  deletePostComplaints(input: DeletePostComplaintsInput!): DeletePostComplaintsPayload
+  blockProduct(input: BlockProductInput!): BlockProductPayload
+  unblockProduct(input: UnblockProductInput!): UnblockProductPayload
+  deleteProductComplaints(input: DeleteProductComplaintsInput!): DeleteProductComplaintsPayload
+  deleteMessage(input: DeleteMessageInput!): DeleteMessagePayload
+  editMessage(input: EditMessageInput!): EditMessagePayload
+  deleteMessageComplaints(input: DeleteMessageComplaintsInput!): DeleteMessageComplaintsPayload
+  editThread(input: EditThreadInput!): EditThreadPayload
+  deleteThread(input: DeleteThreadInput!): DeleteThreadPayload
+  lockThread(input: LockThreadInput!): LockThreadPayload
+  unlockThread(input: UnlockThreadInput!): UnlockThreadPayload
+  deleteThreadComplaints(input: DeleteThreadComplaintsInput!): DeleteThreadComplaintsPayload
+  updateUserSettings(input: UpdateUserSettingsInput!): UpdateUserSettingsPayload
+  updateUserDesignPreference(input: UpdateUserDesignPreferenceInput!): UpdateUserDesignPreferencePayload
+  changeUserPassword(input: ChangeUserPasswordInput!): ChangeUserPasswordPayload
+  setUpNewEmail(input: SetUpNewEmailInput!): SetUpNewEmailPayload
+  updateUserNotificationSettings(input: UpdateUserNotificationsSettingsInput!): UpdateUserNotificationsSettingsPayload
+  subscribeToNewsletter(input: SubscribeToNewsletterInput!): SubscribeToNewsletterPayload
+  removeFriendship(input: RemoveFriendshipInput!): RemoveFriendshipPayload
+  acceptFriendInvitation(input: AcceptFriendInvitationInput!): AcceptFriendInvitationPayload
+  cancelFriendInvitation(input: CancelFriendInvitationInput!): CancelFriendInvitationPayload
+  sendFriendInvitation(input: SendFriendInvitationInput!): SendFriendInvitationPayload
+  loginMutation(password: String!, remember: Boolean, rules: Boolean, username: String!): LoginMutation
+  registerMutation(county: ID, email: String!, gender: Int, newsletter: Boolean, password: String!, personaldata: Boolean!, username: String!): RegisterMutation
+  passwordResetMutation(email: String!): PasswordResetMutation
+  uploadPhotoFiles(input: UploadPhotoFilesInput!): UploadPhotoFilesPayload
+  removePhotoFile(input: RemovePhotoFileInput!): RemovePhotoFilePayload
+  removePhotoFiles(input: RemovePhotoFilesInput!): RemovePhotoFilesPayload
+  setFriendsLastVisit(input: SetFriendsLastVisitInput!): SetFriendsLastVisitPayload
+  addToStaffPicksSuggestions(input: AddToStaffPickSuggestionsInput!): AddToStaffPickSuggestionsPayload
+  likeCollection(input: LikeCollectionInput!): LikeCollectionPayload
+  unlikeCollection(input: UnlikeCollectionInput!): UnlikeCollectionPayload
+  updateCollection(input: UpdateCollectionInput!): UpdateCollectionPayload
+  removeCollection(input: RemoveCollectionInput!): RemoveCollectionPayload
+  createCollectionImage(input: CreateCollectionImageInput!): CreateCollectionImagePayload
+  subscribeGroup(input: SubscribeGroupInput!): SubscribeGroupPayload
+  unsubscribeGroup(input: UnsubscribeGroupInput!): UnsubscribeGroupPayload
+  joinGroup(input: JoinGroupInput!): JoinGroupPayload
+  leaveGroup(input: LeaveGroupInput!): LeaveGroupPayload
+  inviteUserToGroup(input: InviteUserToGroupInput!): InviteUserToGroupPayload
+  createGroup(input: CreateGroupInput!): CreateGroupPayload
+  updateGroupInfo(input: UpdateGroupInfoInput!): UpdateGroupInfoPayload
+  addModerators(input: AddModeratorsInput!): AddModeratorsPayload
+  removeModerator(input: RemoveModeratorInput!): RemoveModeratorPayload
+  deleteGroupCoverPhoto(input: DeleteGroupCoverPhotoInput!): DeleteGroupCoverPhotoPayload
+  blockGroupMember(input: BlockGroupMemberInput!): BlockGroupMemberPayload
+  removeGroupMemberBlock(input: RemoveGroupMemberBlockInput!): RemoveGroupMemberBlockPayload
+  setLastVisit(input: SetLastVisitInput!): SetLastVisitPayload
+  updateSelection(input: UpdateSelectionItemsInput!): UpdateSelectionItemsPayload
+  createSelectionItem(input: CreateSelectionItemInput!): CreateSelectionItemPayload
+  removeSelectionItem(input: RemoveSelectionItemInput!): RemoveSelectionItemPayload
+  updateSelectionItem(input: UpdateSelectionItemInput!): UpdateSelectionItemPayload
+  likePhotoBlog(input: LikePhotoBlogInput!): LikePhotoBlogPayload
+  unlikePhotoBlog(input: UnlikePhotoBlogInput!): UnlikePhotoBlogPayload
+  updateCoverImage(input: PhotoBlogCoverImageMutationInput!): PhotoBlogCoverImageMutationPayload
+  updateLiving(input: UpdateLivingInput!): UpdateLivingPayload
+  updateWedding(input: UpdateWeddingInput!): UpdateWeddingPayload
+  updateGarden(input: UpdateGardenInput!): UpdateGardenPayload
+  addPostImages(input: AddPostImagesInput!): AddPostImagesPayload
+  updateImageTitle(input: UpdateImageTitleInput!): UpdateImageTitlePayload
+  subscribeImage(input: SubscribeImageInput!): SubscribeImagePayload
+  unsubscribeImage(input: UnsubscribeImageInput!): UnsubscribeImagePayload
+  likeImage(input: LikeImageInput!): LikeImagePayload
+  unlikeImage(input: UnlikeImageInput!): UnlikeImagePayload
+  complainImage(input: ComplainImageInput!): ComplainImagePayload
+  removeImage(input: RemoveImageInput!): RemoveImagePayload
+  createComment(input: CommentMutationInput!): CommentMutationPayload
+  complainComment(input: ComplainCommentInput!): ComplainCommentPayload
+  likeComment(input: LikeCommentInput!): LikeCommentPayload
+  unlikeComment(input: UnlikeCommentInput!): UnlikeCommentPayload
+  subscribePost(input: SubscribePostInput!): SubscribePostPayload
+  unsubscribePost(input: UnsubscribePostInput!): UnsubscribePostPayload
+  likePost(input: LikePostInput!): LikePostPayload
+  unlikePost(input: UnlikePostInput!): UnlikePostPayload
+  complainPost(input: ComplainPostInput!): ComplainPostPayload
+  createPost(input: CreatePostMutationInput!): CreatePostMutationPayload
+  updatePost(input: UpdatePostMutationInput!): UpdatePostMutationPayload
+  removePost(input: RemovePostMutationInput!): RemovePostMutationPayload
+  updateAlbum(input: UpdateAlbumInput!): UpdateAlbumPayload
+  updateAlbumImages(input: UpdateAlbumImagesInput!): UpdateAlbumImagesPayload
+  reorderAlbumImages(input: ReorderAlbumImagesInput!): ReorderAlbumImagesPayload
+  setIsPublishedPr(input: SetIsPublishedMutationInput!): SetIsPublishedMutationPayload
+}
+
+"""
+An element that is generated as a part of a grid generated with method photoblog.utils.calc_nice_image_grid.
+"""
+type NiceImageGridElement {
+  height: Int
+  width: Int
+  image: ImageNode
+  user: UserNode
+}
+
+"""An object with an ID"""
+interface Node {
+  """The ID of the object."""
+  id: ID!
+}
+
+enum NotificationMailing {
+  OFF
+  MODERATE
+  IMMEDIATE
+}
+
+type NotificationSettings {
+  bazaarNotificationsOn: Boolean
+  internalPostOn: Boolean
+  notificationMailing: NotificationMailing
+  newsletterOn: Boolean
+}
+
+"""
+The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.
+"""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type PairingConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [PairingEdge]!
+}
+
+"""A Relay edge containing a `Pairing` and its cursor."""
+type PairingEdge {
+  """The item at the end of the edge"""
+  node: PairingNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type PairingNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  contentType1: ContentTypeNode!
+  objectId1: Int!
+  contentType2: ContentTypeNode!
+  objectId2: Int!
+}
+
+type PasswordResetMutation {
+  status: Boolean
+}
+
+input PaymentInput {
+  vendor: ID
+  period: Int
+  clientMutationId: String
+}
+
+type PaymentPayload {
+  paymentRedirectUrl: String
+  cardPayment: CardPaymentNode
+  clientMutationId: String
+}
+
+type PhotoBlogConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [PhotoBlogEdge]!
+}
+
+input PhotoBlogCoverImageMutationInput {
+  imageFile: Upload
+  clientMutationId: String
+}
+
+type PhotoBlogCoverImageMutationPayload {
+  photoblog: PhotoBlogNode
+  clientMutationId: String
+}
+
+"""A Relay edge containing a `PhotoBlog` and its cursor."""
+type PhotoBlogEdge {
+  """The item at the end of the edge"""
+  node: PhotoBlogNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type PhotoBlogNode implements Node & Likeable {
+  user: UserNode
+  photoblogType: PhotoBlogPhotoblogType!
+  title: String!
+  description: String!
+  isActive: Boolean!
+  commentCan: Int!
+  commentCount: Int!
+  profileVisibility: PhotoBlogProfileVisibility!
+  coverImage: PhotoFileNode
+
+  """The ID of the object."""
+  id: ID!
+  likesCount: Int
+  isLikedByUser(user: ID!): Boolean
+  isLikedByViewer: Boolean
+  likers(before: String, after: String, first: Int, last: Int, username: String, isStaff: Boolean, inactive: Boolean, includeVendors: Boolean, usernameContains: String, abroad: Boolean, project: ID, county: ID, orderBy: UserOrderingFilterEnum): UserNodeConnection
+  details: SiteDetail
+  collections(before: String, after: String, first: Int, last: Int, slug: String, viewerCollections: Boolean, userCollections: String, favourite: Boolean, myCollections: Boolean, title: String, minImageCount: Float, modifiedAfterNDays: Float, excludeSlug: String, containsImage: String, orderBy: CollectionOrderingFilterEnum): CollectionNodeConnection
+  articlesCount: Int
+  albumsCount: Int
+  siteInfo: String
+  weddingAlbum: PostNode
+}
+
+type PhotoBlogNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [PhotoBlogNodeEdge]!
+}
+
+"""A Relay edge containing a `PhotoBlogNode` and its cursor."""
+type PhotoBlogNodeEdge {
+  """The item at the end of the edge"""
+  node: PhotoBlogNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""An enumeration."""
+enum PhotoBlogPhotoblogType {
+  """VISITOR_PHOTOBLOG"""
+  A_1
+
+  """VENDOR_PHOTOBLOG"""
+  A_2
+}
+
+"""An enumeration."""
+enum PhotoBlogProfileVisibility {
+  """PUBLIC_PROFILE"""
+  A_0
+
+  """AUTHENTICATED_ONLY_PROFILE"""
+  A_1
+
+  """FRIENDS_ONLY_PROFILE"""
+  A_2
+}
+
+type PhotoFileConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [PhotoFileEdge]!
+}
+
+"""A Relay edge containing a `PhotoFile` and its cursor."""
+type PhotoFileEdge {
+  """The item at the end of the edge"""
+  node: PhotoFileNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type PhotoFileESNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  userId: ID
+  type: Int
+  width: Int
+  height: Int
+  createdTime: DateTime
+  status: Int
+  versionsStored(key: Int): [VersionStored]
+  src: String
+  srcset: String
+}
+
+type PhotoFileNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  type: Int!
+  width: Int
+  height: Int
+  deleteOnTime: DateTime
+  createdTime: DateTime!
+  status: Int
+  versionsStored(key: Int): [VersionStored]
+  srcset: String
+  src: String!
+  isPortrait: Boolean!
+  pk: Int
+}
+
+type PhotoFileNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [PhotoFileNodeEdge]!
+}
+
+"""A Relay edge containing a `PhotoFileNode` and its cursor."""
+type PhotoFileNodeEdge {
+  """The item at the end of the edge"""
+  node: PhotoFileNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+enum PostCategory {
+  """Album"""
+  REGULAR_ALBUM
+
+  """Svadobný album"""
+  WEDDING_ALBUM
+
+  """Firemný album"""
+  VENDOR_ALBUM
+}
+
+type PostConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [PostEdge]!
+}
+
+"""A Relay edge containing a `Post` and its cursor."""
+type PostEdge {
+  """The item at the end of the edge"""
+  node: PostNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type PostNode implements Node & Likeable {
+  user: UserNode
+  postType: PostType
+  content: String
+  slug: String!
+  commentCount: Int!
+  createdTime: DateTime!
+  lastChangeTime: DateTime
+  group: GroupNode
+  titleImage: PhotoFileNode
+  isPublishedPr: Boolean!
+
+  """The ID of the object."""
+  id: ID!
+  likesCount: Int
+  isLikedByUser(user: ID!): Boolean
+  isLikedByViewer: Boolean
+  likers(before: String, after: String, first: Int, last: Int, username: String, isStaff: Boolean, inactive: Boolean, includeVendors: Boolean, usernameContains: String, abroad: Boolean, project: ID, county: ID, orderBy: UserOrderingFilterEnum): UserNodeConnection
+  title: String
+  comments(before: String, after: String, first: Int, last: Int): CommentConnection
+  isSubscribedByViewer: Boolean
+  isStaffpick: Boolean
+  isCreatedByViewer: Boolean!
+  visibility: PostVisibility
+  textContent(wordCount: Int = 30): String!
+  isNew: Boolean
+  selectionItems(before: String, after: String, first: Int, last: Int): SelectionItemConnection
+  images(new: Boolean, before: String, after: String, first: Int, last: Int): ImageConnection
+  imagesCount: Int
+  newImagesCount: Int
+  href: String!
+  canPublishPr: Boolean
+  isWeddingAlbum: Boolean
+}
+
+type PostNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [PostNodeEdge]!
+}
+
+"""A Relay edge containing a `PostNode` and its cursor."""
+type PostNodeEdge {
+  """The item at the end of the edge"""
+  node: PostNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+enum PostType {
+  """Album"""
+  POST_ALBUM
+
+  """Krátka správa"""
+  POST_SHORT_MESSAGE
+
+  """Článok"""
+  POST_ARTICLE
+}
+
+enum PostVisibility {
+  """Pre všetkých"""
+  POST_VISIBILITY_PUBLIC
+
+  """Len pre registrovaných"""
+  POST_VISIBILITY_AUTHENTICATED
+
+  """Len pre priateľov"""
+  POST_VISIBILITY_FRIENDS
+}
+
+input PriceForVendorInput {
+  vendor: ID
+  period: Int
+  clientMutationId: String
+}
+
+type PriceForVendorPayload {
+  value: Float
+  currency: String
+  paymentVs: String
+  proformaInvoiceUrl: String
+  clientMutationId: String
+}
+
+type ProductConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ProductEdge]!
+}
+
+"""A Relay edge containing a `Product` and its cursor."""
+type ProductEdge {
+  """The item at the end of the edge"""
+  node: ProductNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ProductESConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ProductESEdge]!
+  length: Int
+  totalPages: Int
+}
+
+"""A Relay edge containing a `ProductES` and its cursor."""
+type ProductESEdge {
+  """The item at the end of the edge"""
+  node: ProductESNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ProductESNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  productTitle: String
+  productDescription: String
+  userId: ID
+  userUsername: String
+  buyersCount: Int
+  categoryName: String
+  categorySlug: String
+  url: String
+  price: Float
+  lastUpdate: DateTime
+  createdTime: DateTime
+  isVendor: Boolean
+  featuredImage: PhotoFileESNode
+}
+
+type ProductNode implements Node & Likeable {
+  title: String!
+  description: String!
+  price: Float!
+  createdTime: DateTime!
+  startTime: DateTime!
+  slug: String!
+  user: UserNode
+  isVendor: Boolean!
+
+  """The ID of the object."""
+  id: ID!
+  likesCount: Int
+  isLikedByUser(user: ID!): Boolean
+  isLikedByViewer: Boolean
+  likers(before: String, after: String, first: Int, last: Int, username: String, isStaff: Boolean, inactive: Boolean, includeVendors: Boolean, usernameContains: String, abroad: Boolean, project: ID, county: ID, orderBy: UserOrderingFilterEnum): UserNodeConnection
+  productPhotoFiles(before: String, after: String, first: Int, last: Int): ProductPhotoFileNodeConnection
+  featuredImage: PhotoFileNode
+  buyersCount: Int
+  url: String
+}
+
+type ProductNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ProductNodeEdge]!
+}
+
+"""A Relay edge containing a `ProductNode` and its cursor."""
+type ProductNodeEdge {
+  """The item at the end of the edge"""
+  node: ProductNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ProductPhotoFileNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  photofile: PhotoFileNode!
+  position: Int!
+}
+
+type ProductPhotoFileNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ProductPhotoFileNodeEdge]!
+}
+
+"""A Relay edge containing a `ProductPhotoFileNode` and its cursor."""
+type ProductPhotoFileNodeEdge {
+  """The item at the end of the edge"""
+  node: ProductPhotoFileNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+enum ProductsOrderBy {
+  CREATION
+  UPDATED
+  PRICE
+  PRICE_DESC
+}
+
+type ProjectNode implements Node {
+  property: String!
+  verb: String!
+
+  """The ID of the object."""
+  id: ID!
+  project: String
+}
+
+type ProjectNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ProjectNodeEdge]!
+}
+
+"""A Relay edge containing a `ProjectNode` and its cursor."""
+type ProjectNodeEdge {
+  """The item at the end of the edge"""
+  node: ProjectNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type PropertiesESNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  categorySlug: String
+  properties: [PropertyESNode]
+}
+
+type PropertyESNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  key: String
+  name: String
+  buckets: [BucketESNode]
+}
+
+input PropertyValueESNode {
+  property: String
+  value: String
+}
+
+type Query {
+  """The ID of the object"""
+  todolistTemplate(id: ID!): TodoListTemplateNode
+  todolistTemplates(before: String, after: String, first: Int, last: Int, server: ID): TodoListTemplateNodeConnection
+
+  """The ID of the object"""
+  weddingTodolistTemplate(id: ID!): TodoListTemplateNode
+  weddingTodolistTemplates(before: String, after: String, first: Int, last: Int, server: ID): TodoListTemplateNodeConnection
+  weddingTodolist: TodoListNode
+  brands(before: String, after: String, first: Int, last: Int, nameSearch: String): BrandNodeConnection
+  services(before: String, after: String, first: Int, last: Int, nameSearch: String): ServiceNodeConnection
+  userBrands(before: String, after: String, first: Int, last: Int, user_Username: String, brand_Vendor_User_Username: String): CountableConnectionTypeConnection
+  pairings(objectType1: String, objectType2: String, before: String, after: String, first: Int, last: Int): PairingConnection
+  pairingTypes: [[String]]
+
+  """The ID of the object"""
+  mail(id: ID!): MailNode
+  mails(before: String, after: String, first: Int, last: Int, unreadOnly: Boolean, search: String, mailbox: MailboxType): MailNodeConnection
+  catalogCategoryGroups(before: String, after: String, first: Int, last: Int, gettext: String): CatalogCategoryGroupNodeConnection
+  catalogCategories(before: String, after: String, first: Int, last: Int, gettext: String, categorySlug: String, serverId: ID): CatalogCategoryNodeConnection
+  vendors(catalogCategoryIds: [ID], before: String, after: String, first: Int, last: Int, name: String, username: String): VendorNodeConnection
+
+  """The ID of the object"""
+  vendor(id: ID!): VendorNode
+  vendorCount(categorySlug: String): Int
+
+  """The ID of the object"""
+  tagSlug(id: ID!): TagSlugNode
+  tagSlugs(before: String, after: String, first: Int, last: Int, slug: String, homepageSlugs: Boolean): TagSlugNodeConnection
+  taggedImages(tagIds: [ID], before: String, after: String, first: Int, last: Int): ImageNodeConnection
+  colorOrderingSk: [ValueNode]
+  colorOrderingCz: [ValueNode]
+  categoryPropertyValues(categoryId: ID): CategoryPropertiesValuesNode
+  properties(categorySlug: String, countyNames: [String], priceFrom: Float, priceTo: Float, excludeUsed: Boolean, excludeVendor: Boolean, properties: [PropertyValueESNode], search: String): PropertiesESNode
+  products(categorySlug: String, countyNames: [String], priceFrom: Float, priceTo: Float, excludeUsed: Boolean, excludeVendor: Boolean, properties: [PropertyValueESNode], search: String, orderBy: ProductsOrderBy, page: Int, before: String, after: String, first: Int, last: Int): ProductESConnection
+  buyerReplyRedirectUrl(token: String): String
+
+  """The ID of the object"""
+  product(id: ID!): ProductNode
+  productsDb(categoryIds: [ID], before: String, after: String, first: Int, last: Int): ProductNodeConnection
+  featuredContents(before: String, after: String, first: Int, last: Int): FeaturedContentNodeConnection
+  featuredContent: FeaturedContentNode
+  contests(before: String, after: String, first: Int, last: Int): ContestNodeConnection
+  contest: ContestNode
+  reportedBugs(before: String, after: String, first: Int, last: Int): ReportedBugNodeConnection
+  rules(before: String, after: String, first: Int, last: Int, subType: String): RuleNodeConnection
+
+  """The ID of the object"""
+  complaint(id: ID!): ComplaintNode
+  complaints(category: FlagsCategory!, servers: [ID], username: String, before: String, after: String, first: Int, last: Int): TargetConnection
+  servers(before: String, after: String, first: Int, last: Int): ServerNodeConnection
+  serverCompanies(before: String, after: String, first: Int, last: Int): ServerCompanyNodeConnection
+
+  """The ID of the object"""
+  county(id: ID!): CountyNode
+  counties(before: String, after: String, first: Int, last: Int, countryName: String, catalogCategorySlug: String): CountyNodeConnection
+  countries(before: String, after: String, first: Int, last: Int): CountryNodeConnection
+
+  """The ID of the object"""
+  photoFile(id: ID!): PhotoFileNode
+  favoritedImages(before: String, after: String, first: Int, last: Int): FavoritedImageNodeConnection
+  userAlbums(before: String, after: String, first: Int, last: Int, username: String, excludeSlug: String): PostNodeConnection
+
+  """The ID of the object"""
+  image(id: ID!): ImageNode
+
+  """The ID of the object"""
+  collection(id: ID!): CollectionNode
+  collections(before: String, after: String, first: Int, last: Int, slug: String, viewerCollections: Boolean, userCollections: String, favourite: Boolean, myCollections: Boolean, title: String, minImageCount: Float, modifiedAfterNDays: Float, excludeSlug: String, containsImage: String, orderBy: CollectionOrderingFilterEnum): CollectionNodeConnection
+  groups(before: String, after: String, first: Int, last: Int, id: String, name: String, orderBy: GroupOrderingFilterEnum): GroupNodeConnection
+  groupCount: Int!
+  relatedGroups(before: String, after: String, first: Int, last: Int): GroupNodeConnection
+  myGroups(before: String, after: String, first: Int, last: Int): GroupNodeConnection
+
+  """The ID of the object"""
+  group(id: ID!): GroupNode
+  groupInviteRecommendations(before: String, after: String, first: Int, last: Int, username: String, groupId: ID!): UserNodeConnection
+  mostPopularHashtags(before: String, after: String, first: Int, last: Int, groupId: ID): HashtagNodeConnection
+  mostRecentHashtags(before: String, after: String, first: Int, last: Int, groupId: ID): HashtagNodeConnection
+  popularImages(before: String, after: String, first: Int, last: Int, isAuthenticated: Boolean): ImageNodeConnection
+  mostPopular(before: String, after: String, first: Int, last: Int, dayRange: Float!): PostNodeConnection
+  staffpicks(before: String, after: String, first: Int, last: Int, auth: Boolean): PostNodeConnection
+  feed(
+    before: String
+    after: String
+    first: Int
+    last: Int
+
+    """Ordering"""
+    orderBy: String
+    username: String
+    slug: String
+    hashtag: String
+    search: String
+    inLikedPhotoBlog: Boolean
+    mySelection: Boolean
+    professionals: Boolean
+    excludeProfessionals: Boolean
+    myLikes: Boolean
+    myComments: Boolean
+    isStaffpick: Boolean
+    noSelection: Boolean
+    selectionItem: String
+    prArticles: Boolean
+    onePostPerUser: Boolean
+    mostFavorite: Boolean
+    isAuth: Boolean
+    queryKey: Float
+    postType: PostType
+  ): PostNodeConnection
+  friendsLastVisitCount: String
+
+  """The ID of the object"""
+  selectionItem(id: ID!): SelectionItemNode
+  selectionItems(before: String, after: String, first: Int, last: Int, serverId: ID): SelectionItemNodeConnection
+
+  """The ID of the object"""
+  selection(id: ID!): SelectionNode
+  selections(before: String, after: String, first: Int, last: Int, user_Username: String): SelectionNodeConnection
+  niceImageGrid(slug: String!, wrapWidth: Int = 1110, spacing: Int = 0, meanHeight: Int = 300): [[NiceImageGridElement]]
+
+  """The ID of the object"""
+  photoBlog(id: ID!): PhotoBlogNode
+  photoBlogs(before: String, after: String, first: Int, last: Int, username: String): PhotoBlogNodeConnection
+  upcomingWeddings(before: String, after: String, first: Int, last: Int): WeddingNodeConnection
+
+  """The ID of the object"""
+  comment(id: ID!): CommentNode
+  comments(before: String, after: String, first: Int, last: Int, createdTime: DateTime, orderBy: CommentOrderingFilterEnum, parentId: ID!): CommentNodeConnection
+
+  """The ID of the object"""
+  post(id: ID!): PostNode
+  postBySlug(slug: String, username: String): PostNode
+  threadCatalogCategories(threadCategoryId: ID, before: String, after: String, first: Int, last: Int): CatalogCategoryConnection
+  threadVendors(threadCategoryId: ID, before: String, after: String, first: Int, last: Int): VendorConnection
+
+  """The ID of the object"""
+  threadCategory(id: ID!): ThreadCategoryNode
+  threadCategories(before: String, after: String, first: Int, last: Int, slug: String, serverId: ID): ThreadCategoryNodeConnection
+
+  """The ID of the object"""
+  thread(id: ID!): ThreadNode
+  threads(
+    categoryIds: [ID]
+    before: String
+    after: String
+    first: Int
+    last: Int
+    slug: String
+
+    """Ordering"""
+    orderBy: String
+  ): ThreadNodeConnection
+  popularThreads(before: String, after: String, first: Int, last: Int, slug: String, category: String): ThreadNodeConnection
+
+  """The ID of the object"""
+  message(id: ID!): MessageNode
+  messages(
+    before: String
+    after: String
+    first: Int
+    last: Int
+
+    """Ordering"""
+    orderBy: String
+  ): MessageNodeConnection
+  checkPassword(id: String!, password: String!): CheckPassword
+  viewer: ViewerNode
+
+  """The ID of the object"""
+  user(id: ID!): UserNode
+  users(before: String, after: String, first: Int, last: Int, username: String, isStaff: Boolean, inactive: Boolean, includeVendors: Boolean, usernameContains: String, abroad: Boolean, project: ID, county: ID, orderBy: UserOrderingFilterEnum): UserNodeConnection
+
+  """The ID of the object"""
+  profile(id: ID!): UserNode
+
+  """The ID of the object"""
+  project(id: ID!): ProjectNode
+  projects(before: String, after: String, first: Int, last: Int): ProjectNodeConnection
+  usersAutocomplete(before: String, after: String, first: Int, last: Int, username: String, usernameContains: String, group: String): UserNodeConnection
+}
+
+type RegisterMutation {
+  status: RegistrationStatus
+}
+
+input RegisterVendorInput {
+  username: String
+  password: String
+  email: String
+  county: ID
+  category: ID
+  hasAcceptedSiteRules: Boolean
+  acceptGdpr: Boolean
+  clientMutationId: String
+}
+
+type RegisterVendorPayload {
+  user: UserNode
+  clientMutationId: String
+}
+
+enum RegistrationStatus {
+  SUCCESS
+  USER_EXISTS
+  WRONG_USERNAME
+  EMAIL_EXISTS
+}
+
+input RemoveCollectionInput {
+  id: ID
+  clientMutationId: String
+}
+
+type RemoveCollectionPayload {
+  success: Boolean
+  clientMutationId: String
+}
+
+input RemoveContestLogoInput {
+  id: ID
+  clientMutationId: String
+}
+
+type RemoveContestLogoPayload {
+  contest: ContestNode
+  clientMutationId: String
+}
+
+input RemoveFriendshipInput {
+  userId: ID
+  clientMutationId: String
+}
+
+type RemoveFriendshipPayload {
+  user: UserNode
+  clientMutationId: String
+}
+
+input RemoveGroupMemberBlockInput {
+  groupMemberId: ID!
+  clientMutationId: String
+}
+
+type RemoveGroupMemberBlockPayload {
+  group: GroupNode
+  clientMutationId: String
+}
+
+input RemoveImageInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type RemoveImagePayload {
+  post: PostNode
+  errors: [String]
+  clientMutationId: String
+}
+
+input RemoveMailAttachmentInput {
+  id: ID
+  clientMutationId: String
+}
+
+type RemoveMailAttachmentPayload {
+  clientMutationId: String
+}
+
+input RemoveMailInput {
+  id: ID
+  clientMutationId: String
+}
+
+type RemoveMailPayload {
+  clientMutationId: String
+}
+
+input RemoveModeratorInput {
+  id: ID!
+  moderator: String!
+  clientMutationId: String
+}
+
+type RemoveModeratorPayload {
+  group: GroupNode
+  errors: [String]
+  clientMutationId: String
+}
+
+input RemovePairingInput {
+  objectId1: ID
+  objectId2: ID
+  clientMutationId: String
+}
+
+type RemovePairingPayload {
+  clientMutationId: String
+}
+
+input RemovePairingsInput {
+  globalIds: [ID]
+  clientMutationId: String
+}
+
+type RemovePairingsPayload {
+  clientMutationId: String
+}
+
+input RemovePhotoFileInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type RemovePhotoFilePayload {
+  clientMutationId: String
+}
+
+input RemovePhotoFilesInput {
+  ids: [ID]
+  clientMutationId: String
+}
+
+type RemovePhotoFilesPayload {
+  clientMutationId: String
+}
+
+input RemovePostMutationInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type RemovePostMutationPayload {
+  errors: [String]
+  clientMutationId: String
+}
+
+input RemoveSelectionItemInput {
+  selectionItemId: ID!
+  clientMutationId: String
+}
+
+type RemoveSelectionItemPayload {
+  errors: [String]
+  clientMutationId: String
+}
+
+input RemoveUserBrandInput {
+  id: ID
+  clientMutationId: String
+}
+
+type RemoveUserBrandPayload {
+  clientMutationId: String
+}
+
+input ReorderAlbumImagesInput {
+  id: ID!
+  images: [ID]
+  clientMutationId: String
+}
+
+type ReorderAlbumImagesPayload {
+  post: PostNode
+  clientMutationId: String
+}
+
+type ReportedBugNode implements Node {
+  user: ViewerNode
+  email: String!
+  photoFile: PhotoFileNode
+  comment: String!
+  createdTime: DateTime!
+
+  """The ID of the object."""
+  id: ID!
+}
+
+type ReportedBugNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ReportedBugNodeEdge]!
+}
+
+"""A Relay edge containing a `ReportedBugNode` and its cursor."""
+type ReportedBugNodeEdge {
+  """The item at the end of the edge"""
+  node: ReportedBugNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type RuleNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  gettext: String!
+}
+
+type RuleNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [RuleNodeEdge]!
+}
+
+"""A Relay edge containing a `RuleNode` and its cursor."""
+type RuleNodeEdge {
+  """The item at the end of the edge"""
+  node: RuleNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type SelectionItemConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [SelectionItemEdge]!
+}
+
+"""A Relay edge containing a `SelectionItem` and its cursor."""
+type SelectionItemEdge {
+  """The item at the end of the edge"""
+  node: SelectionItemNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+input SelectionItemInput {
+  id: ID!
+  selected: Boolean!
+}
+
+type SelectionItemNode implements Node {
+  translationKey: String!
+
+  """The ID of the object."""
+  id: ID!
+  name: String
+  isSelectedByViewer: Boolean
+}
+
+type SelectionItemNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [SelectionItemNodeEdge]!
+}
+
+"""A Relay edge containing a `SelectionItemNode` and its cursor."""
+type SelectionItemNodeEdge {
+  """The item at the end of the edge"""
+  node: SelectionItemNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type SelectionNode implements Node {
+  user: UserNode
+
+  """The ID of the object."""
+  id: ID!
+  selectionItems(before: String, after: String, first: Int, last: Int): SelectionItemConnection
+}
+
+type SelectionNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [SelectionNodeEdge]!
+}
+
+"""A Relay edge containing a `SelectionNode` and its cursor."""
+type SelectionNodeEdge {
+  """The item at the end of the edge"""
+  node: SelectionNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+input SendFriendInvitationInput {
+  userId: ID
+  clientMutationId: String
+}
+
+type SendFriendInvitationPayload {
+  user: UserNode
+  clientMutationId: String
+}
+
+type ServerCompanyNode implements Node {
+  name: String!
+
+  """The ID of the object."""
+  id: ID!
+  servers(before: String, after: String, first: Int, last: Int): ServerNodeConnection
+}
+
+type ServerCompanyNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ServerCompanyNodeEdge]!
+}
+
+"""A Relay edge containing a `ServerCompanyNode` and its cursor."""
+type ServerCompanyNodeEdge {
+  """The item at the end of the edge"""
+  node: ServerCompanyNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ServerNode implements Node {
+  name: String!
+  fullName: String!
+  country: CountryNode!
+
+  """The ID of the object."""
+  id: ID!
+}
+
+type ServerNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ServerNodeEdge]!
+}
+
+"""A Relay edge containing a `ServerNode` and its cursor."""
+type ServerNodeEdge {
+  """The item at the end of the edge"""
+  node: ServerNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ServiceNode implements Node {
+  name: String!
+  nameSearch: String!
+  desc: String!
+  slug: String!
+  createdTime: DateTime!
+
+  """The ID of the object."""
+  id: ID!
+}
+
+type ServiceNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ServiceNodeEdge]!
+}
+
+"""A Relay edge containing a `ServiceNode` and its cursor."""
+type ServiceNodeEdge {
+  """The item at the end of the edge"""
+  node: ServiceNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+input SetFriendsLastVisitInput {
+  clientMutationId: String
+}
+
+type SetFriendsLastVisitPayload {
+  friendsLastVisitCount: String
+  clientMutationId: String
+}
+
+input SetIsPublishedMutationInput {
+  id: ID
+  value: Boolean
+  clientMutationId: String
+}
+
+type SetIsPublishedMutationPayload {
+  post: PostNode
+  clientMutationId: String
+}
+
+input SetLastVisitInput {
+  groupId: ID!
+  clientMutationId: String
+}
+
+type SetLastVisitPayload {
+  group: GroupNode
+  clientMutationId: String
+}
+
+input SetUpNewEmailInput {
+  id: ID!
+  newEmail: String!
+  clientMutationId: String
+}
+
+type SetUpNewEmailPayload {
+  user: UserNode
+  clientMutationId: String
+}
+
+interface SiteDetail {
+  info: ID
+  experiences: String
+}
+
+input SubscribeGroupInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type SubscribeGroupPayload {
+  errors: [String]
+  group: GroupNode
+  clientMutationId: String
+}
+
+input SubscribeImageInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type SubscribeImagePayload {
+  errors: [String]
+  image: ImageNode
+  clientMutationId: String
+}
+
+input SubscribePostInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type SubscribePostPayload {
+  errors: [String]
+  post: PostNode
+  clientMutationId: String
+}
+
+input SubscribeToNewsletterInput {
+  email: String
+  clientMutationId: String
+}
+
+type SubscribeToNewsletterPayload {
+  user: UserNode
+  success: Boolean
+  clientMutationId: String
+}
+
+type TagNode implements Node {
+  name: String!
+
+  """The ID of the object."""
+  id: ID!
+  images(before: String, after: String, first: Int, last: Int): ImageNodeConnection
+  imagesCount: Int
+}
+
+type TagSlugNode implements Node {
+  tag: TagNode!
+  slug: String!
+
+  """The ID of the object."""
+  id: ID!
+}
+
+type TagSlugNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [TagSlugNodeEdge]!
+}
+
+"""A Relay edge containing a `TagSlugNode` and its cursor."""
+type TagSlugNodeEdge {
+  """The item at the end of the edge"""
+  node: TagSlugNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type TargetConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [TargetEdge]!
+}
+
+"""A Relay edge containing a `Target` and its cursor."""
+type TargetEdge {
+  """The item at the end of the edge"""
+  node: TargetNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type TargetNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  complaints: [ComplaintNode]
+  target: Complaintable
+}
+
+type ThreadCategoryNode implements Node {
+  superCategoryName: String!
+  superCategoryRow: Int!
+  superCategoryColumn: Int!
+  name: String!
+  description: String!
+  orderIndex: Int!
+  slug: String!
+  threads(
+    before: String
+    after: String
+    first: Int
+    last: Int
+    slug: String
+
+    """Ordering"""
+    orderBy: String
+  ): ThreadNodeConnection
+
+  """The ID of the object."""
+  id: ID!
+  threadsCount: Int
+  subscribed: Boolean
+}
+
+type ThreadCategoryNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ThreadCategoryNodeEdge]!
+}
+
+"""A Relay edge containing a `ThreadCategoryNode` and its cursor."""
+type ThreadCategoryNodeEdge {
+  """The item at the end of the edge"""
+  node: ThreadCategoryNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ThreadNode implements Node {
+  title: String!
+  slug: String!
+  firstMessage: MessageNode!
+  lastMessage: MessageNode!
+  messageCount: Int!
+  category: ThreadCategoryNode!
+  messages(
+    before: String
+    after: String
+    first: Int
+    last: Int
+
+    """Ordering"""
+    orderBy: String
+  ): MessageNodeConnection
+
+  """The ID of the object."""
+  id: ID!
+  likesCount: Int
+  usersCount: Int
+  href: String
+}
+
+type ThreadNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ThreadNodeEdge]!
+}
+
+"""A Relay edge containing a `ThreadNode` and its cursor."""
+type ThreadNodeEdge {
+  """The item at the end of the edge"""
+  node: ThreadNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type TodoListNode {
+  id: ID!
+  label: String
+  description: String
+  server: ServerNode!
+  owner: ViewerNode!
+  template: TodoListTemplateNode!
+  content: String
+  json: String
+  createdDate: DateTime
+  modifiedDate: DateTime
+  showDone: Boolean!
+  ordered: Boolean!
+  count: Int
+  completedCount: Int
+}
+
+type TodoListTemplateNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  label: String
+  slug: String
+  description: String
+  server: ServerNode
+  owner: UserNode
+  content: String!
+  json: String
+  isPublished: Boolean!
+  createdDate: DateTime
+  purpose: String!
+  todolistSet: [TodoListNode]
+  count: Int
+}
+
+type TodoListTemplateNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [TodoListTemplateNodeEdge]!
+}
+
+"""A Relay edge containing a `TodoListTemplateNode` and its cursor."""
+type TodoListTemplateNodeEdge {
+  """The item at the end of the edge"""
+  node: TodoListTemplateNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+input UnblockProductInput {
+  id: ID!
+  rule: ID!
+  comment: String
+  clientMutationId: String
+}
+
+type UnblockProductPayload {
+  product: ProductNode
+  errors: String
+  clientMutationId: String
+}
+
+input UnlikeCollectionInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type UnlikeCollectionPayload {
+  errors: [String]
+  collection: CollectionNode
+  clientMutationId: String
+}
+
+input UnlikeCommentInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type UnlikeCommentPayload {
+  errors: [String]
+  comment: CommentNode
+  clientMutationId: String
+}
+
+input UnlikeImageInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type UnlikeImagePayload {
+  errors: [String]
+  image: ImageNode
+  clientMutationId: String
+}
+
+input UnlikePhotoBlogInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type UnlikePhotoBlogPayload {
+  errors: [String]
+  photoBlog: PhotoBlogNode
+  clientMutationId: String
+}
+
+input UnlikePostInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type UnlikePostPayload {
+  errors: [String]
+  post: PostNode
+  clientMutationId: String
+}
+
+input UnlockThreadInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type UnlockThreadPayload {
+  thread: ThreadNode
+  errors: String
+  clientMutationId: String
+}
+
+input UnsubscribeGroupInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type UnsubscribeGroupPayload {
+  errors: [String]
+  group: GroupNode
+  clientMutationId: String
+}
+
+input UnsubscribeImageInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type UnsubscribeImagePayload {
+  errors: [String]
+  image: ImageNode
+  clientMutationId: String
+}
+
+input UnsubscribePostInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type UnsubscribePostPayload {
+  errors: [String]
+  post: PostNode
+  clientMutationId: String
+}
+
+input UpdateAlbumImagesInput {
+  id: ID!
+  images: [UpdateImageInput]
+  clientMutationId: String
+}
+
+type UpdateAlbumImagesPayload {
+  post: PostNode
+  clientMutationId: String
+}
+
+input UpdateAlbumInput {
+  id: ID
+  title: String
+  content: String
+  visibility: PostVisibility
+  selectionItemIds: [ID]
+  brideName: String
+  groomName: String
+  weddingDate: DateTime
+  weddingCounty: ID
+  weddingCountry: ID
+  weddingCity: String
+  weddingInfo: String
+  clientMutationId: String
+}
+
+type UpdateAlbumPayload {
+  post: PostNode
+  clientMutationId: String
+}
+
+input UpdateCollectionInput {
+  id: ID
+  title: String
+  imagesToRemove: [ID]
+  clientMutationId: String
+}
+
+type UpdateCollectionPayload {
+  errors: [String]
+  collection: CollectionNode
+  clientMutationId: String
+}
+
+input UpdateCustomerInput {
+  id: ID
+  name: String
+  address: String
+  zip: String
+  city: String
+  regid: String
+  vatid: String
+  taxid: String
+  invoiceEmail: String
+  contactPerson: String
+  clientMutationId: String
+}
+
+type UpdateCustomerPayload {
+  customer: CustomerNode
+  clientMutationId: String
+}
+
+input UpdateGardenInput {
+  detailsInfo: String!
+  experiences: String!
+  clientMutationId: String
+}
+
+type UpdateGardenPayload {
+  errors: [String]
+  garden: GardenNode
+  clientMutationId: String
+}
+
+input UpdateGroupInfoInput {
+  id: ID
+  description: String
+  rules: String
+  photoFileId: ID
+  clientMutationId: String
+}
+
+type UpdateGroupInfoPayload {
+  errors: [String]
+  group: GroupNode
+  clientMutationId: String
+}
+
+input UpdateImageInput {
+  id: ID!
+  title: String
+}
+
+input UpdateImageTitleInput {
+  imageId: ID!
+  title: String!
+  clientMutationId: String
+}
+
+type UpdateImageTitlePayload {
+  image: ImageNode
+  clientMutationId: String
+}
+
+input UpdateLivingInput {
+  detailsInfo: String!
+  experiences: String!
+  clientMutationId: String
+}
+
+type UpdateLivingPayload {
+  errors: [String]
+  living: LivingNode
+  clientMutationId: String
+}
+
+input UpdateMailStarredInput {
+  id: ID
+  isStarred: Boolean
+  clientMutationId: String
+}
+
+type UpdateMailStarredPayload {
+  mail: MailNode
+  clientMutationId: String
+}
+
+input UpdateMailUnreadInput {
+  id: ID
+  unread: Boolean
+  clientMutationId: String
+}
+
+type UpdateMailUnreadPayload {
+  mail: MailNode
+  clientMutationId: String
+}
+
+input UpdatePostMutationInput {
+  isVendor: String
+  isLikedByMe: String
+  isStaffpick: Boolean
+  perexImages: String
+  newImageCount: String
+  user: String
+  id: ID
+  title: String
+  postType: PostType
+  postCategory: PostCategory
+  imageCount: Int
+  createdTime: DateTime
+  lastChangeTime: DateTime
+  likesCount: Int
+  commentCount: Int
+  content: String
+  visibility: PostVisibility
+  group: ID
+  titleImageId: Int
+  photoFileIds: [Int]
+  selectionItemIds: [String]
+  brideName: String
+  groomName: String
+  weddingDate: DateTime
+  weddingCounty: ID
+  weddingCountry: ID
+  weddingCity: String
+  clientMutationId: String
+}
+
+type UpdatePostMutationPayload {
+  """May contain more than one error for same field."""
+  errors: [ErrorType]
+  post: PostNode
+  clientMutationId: String
+}
+
+input UpdateSelectionItemInput {
+  selectionItemId: ID!
+  translationKey: String!
+  clientMutationId: String
+}
+
+type UpdateSelectionItemPayload {
+  selectionItem: SelectionItemNode
+  errors: [String]
+  clientMutationId: String
+}
+
+input UpdateSelectionItemsInput {
+  selectionItems: [SelectionItemInput]
+  clientMutationId: String
+}
+
+type UpdateSelectionItemsPayload {
+  errors: [String]
+  selectionItems: [SelectionItemNode]
+  clientMutationId: String
+}
+
+input UpdateUserBrandInput {
+  id: ID
+  serviceId: ID
+  brand: String
+  description: String
+  clientMutationId: String
+}
+
+type UpdateUserBrandPayload {
+  userBrand: UserBrandNode
+  clientMutationId: String
+}
+
+input UpdateUserDesignPreferenceInput {
+  id: ID!
+  oldDesign: Boolean!
+  clientMutationId: String
+}
+
+type UpdateUserDesignPreferencePayload {
+  user: UserNode
+  clientMutationId: String
+}
+
+input UpdateUserNotificationsSettingsInput {
+  id: ID!
+  bazaarNotificationsOn: Boolean
+  internalPostOn: Boolean
+  notificationMailing: NotificationMailing
+  newsletterOn: Boolean
+  clientMutationId: String
+}
+
+type UpdateUserNotificationsSettingsPayload {
+  user: UserNode
+  clientMutationId: String
+}
+
+input UpdateUserSettingsInput {
+  id: ID
+  name: String
+  sex: Int
+  city: String
+  aboutMe: String
+  countyId: ID
+  countryId: ID
+  age: Int
+  birthDate: DateTime
+  avatar: Upload
+  clientMutationId: String
+}
+
+type UpdateUserSettingsPayload {
+  user: UserNode
+  clientMutationId: String
+}
+
+input UpdateVendorAboutInput {
+  about: String
+  clientMutationId: String
+}
+
+type UpdateVendorAboutPayload {
+  vendor: VendorNode
+  clientMutationId: String
+}
+
+input UpdateVendorInformationInput {
+  name: String
+  category: ID
+  county: ID
+  email: String
+  cardText: String
+  address: String
+  phone: String
+  web: String
+  facebookPageUrl: String
+  instagramPageUrl: String
+  clientMutationId: String
+}
+
+type UpdateVendorInformationPayload {
+  vendor: VendorNode
+  clientMutationId: String
+}
+
+input UpdateVendorLogoInput {
+  imageFile: Upload
+  clientMutationId: String
+}
+
+type UpdateVendorLogoPayload {
+  vendor: VendorNode
+  clientMutationId: String
+}
+
+input UpdateVendorVideosInput {
+  inputLinks: [String]
+  clientMutationId: String
+}
+
+type UpdateVendorVideosPayload {
+  videoLinks: [VendorVideoLinkNode!]!
+  clientMutationId: String
+}
+
+input UpdateWeddingInput {
+  partnerName: String
+  detailsInfo: String
+  weddingCity: String
+  weddingDate: DateTime
+  countyId: ID
+  countryId: ID
+  clientMutationId: String
+}
+
+type UpdateWeddingPayload {
+  errors: [String]
+  wedding: WeddingNode
+  clientMutationId: String
+}
+
+"""
+Create scalar that ignores normal serialization/deserialization, since
+that will be handled by the multipart request spec
+"""
+scalar Upload
+
+input UploadPhotoFilesInput {
+  files: [Upload]!
+  photoFileType: Int
+  clientMutationId: String
+}
+
+type UploadPhotoFilesPayload {
+  photoFiles: [PhotoFileNode]
+  clientMutationId: String
+}
+
+type UserBrandNode implements Node {
+  user: ViewerNode!
+  brandText: String!
+  serviceText: String!
+  brand: BrandNode!
+  service: ServiceNode!
+  createdTime: DateTime!
+  description: String!
+  photofile: PhotoFileNode
+
+  """The ID of the object."""
+  id: ID!
+}
+
+type UserBrandNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [UserBrandNodeEdge]!
+}
+
+"""A Relay edge containing a `UserBrandNode` and its cursor."""
+type UserBrandNodeEdge {
+  """The item at the end of the edge"""
+  node: UserBrandNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type UserConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [UserEdge]!
+}
+
+"""A Relay edge containing a `User` and its cursor."""
+type UserEdge {
+  """The item at the end of the edge"""
+  node: UserNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type UserNode implements Node {
+  lastLogin: DateTime
+
+  """
+  Required, 30 characters or fewer. Only letters, numbers, and @, ., +, -, or _ characters.
+  """
+  username: String!
+
+  """
+  Required, 30 characters or fewer. Only letters, numbers, and @, ., +, -, or _ characters.
+  """
+  email: String!
+
+  """Určuje, či sa používateľ môže prihlásiť do správy stránok."""
+  isStaff: Boolean!
+  dateJoined: DateTime!
+
+  """The ID of the object."""
+  id: ID!
+  socialName: String
+  forumMessagesCount: Int
+  photoBlogPostsCount: Int
+  bazaarProductsCount: Int
+  photoBlogLikesCount: Int
+  friendsCount: Int
+  likesQaCount: Int
+  profile: UserProfileNode!
+  photoBlog: PhotoBlogNode
+  project: ProjectNode
+  groups(before: String, after: String, first: Int, last: Int): GroupConnection
+  likedPhotoBlogs(before: String, after: String, first: Int, last: Int): PhotoBlogConnection
+  likedPhotoBlogsCount: Int
+  wasInvitedToGroupByViewer(groupId: ID): Boolean
+  href: String!
+  friends(before: String, after: String, first: Int, last: Int, username: String, isStaff: Boolean, inactive: Boolean, includeVendors: Boolean, usernameContains: String, abroad: Boolean, project: ID, county: ID, orderBy: UserOrderingFilterEnum): UserNodeConnection
+  viewerFriendStatus: FriendStatus
+  favoritedImagesCount: Int
+  isActive: Boolean
+  hasPendingEmail: Boolean
+  notificationSettings: NotificationSettings
+  weddingAlbumHref: String
+}
+
+type UserNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [UserNodeEdge]!
+}
+
+"""A Relay edge containing a `UserNode` and its cursor."""
+type UserNodeEdge {
+  """The item at the end of the edge"""
+  node: UserNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+enum UserOrderingFilterEnum {
+  """obľúbenosti"""
+  STATS__FAVORITED_COUNT_DESC
+
+  """dátumu prihlásenia"""
+  LAST_LOGIN_DESC
+
+  """dátumu registrácie"""
+  DATE_JOINED_DESC
+}
+
+type UserProfileNode implements Node {
+  name: String
+  sex: Int
+  birthDate: Date
+  country: CountryNode
+  county: CountyNode
+  city: String
+  aboutMe: String
+  oldDesign: Boolean
+
+  """The ID of the object."""
+  id: ID!
+  isVendor: Boolean
+  avatar: PhotoFileNode
+  age: Int
+  vendor: VendorNode
+}
+
+type UserProfileNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [UserProfileNodeEdge]!
+}
+
+"""A Relay edge containing a `UserProfileNode` and its cursor."""
+type UserProfileNodeEdge {
+  """The item at the end of the edge"""
+  node: UserProfileNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ValueNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  value: String
+  deletedTime: DateTime
+  name: String
+  background: String
+  valueRaw: String
+}
+
+type VendorConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [VendorEdge]!
+}
+
+"""A Relay edge containing a `Vendor` and its cursor."""
+type VendorEdge {
+  """The item at the end of the edge"""
+  node: VendorNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type VendorNode implements Node {
+  user: ViewerNode!
+  customer: CustomerNode
+  server: ServerNode!
+  category: CatalogCategoryNode!
+  photoblog: PhotoBlogNode!
+  album: PostNode!
+  county: CountyNode
+  logo: PhotoFileNode
+  name: String!
+  about: String
+  address: String
+  phone: String
+  web: String
+  facebookPageUrl: String
+  instagramPageUrl: String
+  recurringCardPayment: CardPaymentNode
+  createdTime: DateTime!
+  cardText: String!
+  videoLinks(before: String, after: String, first: Int, last: Int): VendorVideoLinkNodeConnection
+
+  """The ID of the object."""
+  id: ID!
+  slug: String
+  invoices(before: String, after: String, first: Int, last: Int): InvoiceConnection
+  paymentVs: String
+  href: String!
+  paidTillDate: Date
+  products(before: String, after: String, first: Int, last: Int): ProductConnection
+}
+
+type VendorNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [VendorNodeEdge]!
+}
+
+"""A Relay edge containing a `VendorNode` and its cursor."""
+type VendorNodeEdge {
+  """The item at the end of the edge"""
+  node: VendorNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+enum VendorOrderingFilterEnum {
+  """ORDER_BY_RANDOM"""
+  RANDOM
+
+  """ORDER_BY_RANDOM"""
+  RANDOM_DESC
+
+  """Zoradiť od najnovšej"""
+  CREATED_TIME
+
+  """Zoradiť od najnovšej"""
+  CREATED_TIME_DESC
+
+  """ORDER_BY_LIKES"""
+  LIKES_COUNT
+
+  """ORDER_BY_LIKES"""
+  LIKES_COUNT_DESC
+}
+
+type VendorVideoLinkNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  vendor: VendorNode!
+  link: String!
+  linkType: VendorVideoLinkType
+  videoCode: String
+}
+
+type VendorVideoLinkNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [VendorVideoLinkNodeEdge]!
+}
+
+"""A Relay edge containing a `VendorVideoLinkNode` and its cursor."""
+type VendorVideoLinkNodeEdge {
+  """The item at the end of the edge"""
+  node: VendorVideoLinkNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""An enumeration."""
+enum VendorVideoLinkType {
+  YOUTUBE
+  VIMEO
+}
+
+type VersionStored {
+  key: String
+  width: Int
+  height: Int
+  url: String
+}
+
+type ViewerNode implements Node {
+  lastLogin: DateTime
+
+  """
+  Required, 30 characters or fewer. Only letters, numbers, and @, ., +, -, or _ characters.
+  """
+  username: String!
+
+  """
+  Required, 30 characters or fewer. Only letters, numbers, and @, ., +, -, or _ characters.
+  """
+  email: String!
+
+  """Určuje, či sa používateľ môže prihlásiť do správy stránok."""
+  isStaff: Boolean!
+  dateJoined: DateTime!
+
+  """The ID of the object."""
+  id: ID!
+  password: String!
+
+  """
+  Určuje, či používateľ získava automaticky všetky práva aj bez priameho priradenia.
+  """
+  isSuperuser: Boolean!
+  groups(before: String, after: String, first: Int, last: Int): GroupConnection
+  firstName: String!
+  lastName: String!
+  isActive: Boolean
+  photofileSet(before: String, after: String, first: Int, last: Int): PhotoFileNodeConnection
+  complaintSet(before: String, after: String, first: Int, last: Int): ComplaintNodeConnection
+  reportedbugSet(before: String, after: String, first: Int, last: Int): ReportedBugNodeConnection
+  profile: UserProfileNode!
+  wedding: WeddingNode
+  garden: GardenNode
+  living: LivingNode
+  photoblogSet(before: String, after: String, first: Int, last: Int): PhotoBlogNodeConnection
+  customer: CustomerNode
+  friends(before: String, after: String, first: Int, last: Int, username: String, isStaff: Boolean, inactive: Boolean, includeVendors: Boolean, usernameContains: String, abroad: Boolean, project: ID, county: ID, orderBy: UserOrderingFilterEnum): UserNodeConnection
+  productSet(before: String, after: String, first: Int, last: Int): ProductNodeConnection
+  subscribedForumCategories(before: String, after: String, first: Int, last: Int): ThreadCategoryNodeConnection
+  firstMessageThreadSet(before: String, after: String, first: Int, last: Int): ThreadNodeConnection
+  lastMessageThreadSet(before: String, after: String, first: Int, last: Int): ThreadNodeConnection
+  threadSet(before: String, after: String, first: Int, last: Int): ThreadNodeConnection
+  subscribedThreads(before: String, after: String, first: Int, last: Int): ThreadNodeConnection
+  messageAuthor(before: String, after: String, first: Int, last: Int, thread: ID): MessageNodeConnection
+  groupSet(before: String, after: String, first: Int, last: Int): GroupNodeConnection
+  subscribedGroups(before: String, after: String, first: Int, last: Int): GroupNodeConnection
+  postSet(before: String, after: String, first: Int, last: Int): PostNodeConnection
+  subscribedPosts(before: String, after: String, first: Int, last: Int): PostNodeConnection
+  subscribedImages(before: String, after: String, first: Int, last: Int): ImageNodeConnection
+  subscribedCollections(before: String, after: String, first: Int, last: Int): CollectionNodeConnection
+  commentSet(before: String, after: String, first: Int, last: Int): CommentNodeConnection
+  favoritedimageSet(before: String, after: String, first: Int, last: Int): FavoritedImageNodeConnection
+  groupmemberSet(before: String, after: String, first: Int, last: Int): GroupMemberNodeConnection
+  selection: SelectionNode
+  vendorSet(before: String, after: String, first: Int, last: Int): VendorNodeConnection
+  mailattachmentSet(before: String, after: String, first: Int, last: Int): MailAttachmentNodeConnection
+  mailSet(before: String, after: String, first: Int, last: Int): MailNodeConnection
+  userbrandSet(before: String, after: String, first: Int, last: Int): UserBrandNodeConnection
+  todolisttemplateSet(before: String, after: String, first: Int, last: Int, server: ID): TodoListTemplateNodeConnection
+  todolistSet: [TodoListNode]
+  socialName: String
+  forumMessagesCount: Int
+  photoBlogPostsCount: Int
+  bazaarProductsCount: Int
+  photoBlogLikesCount: Int
+  friendsCount: Int
+  likesQaCount: Int
+  photoBlog: PhotoBlogNode
+  project: ProjectNode
+  likedPhotoBlogs(before: String, after: String, first: Int, last: Int): PhotoBlogConnection
+  likedPhotoBlogsCount: Int
+  wasInvitedToGroupByViewer(groupId: ID): Boolean
+  href: String!
+  viewerFriendStatus: FriendStatus
+  favoritedImagesCount: Int
+  hasPendingEmail: Boolean
+  notificationSettings: NotificationSettings
+  weddingAlbumHref: String
+  pk: Int
+  isSuperstaff: Boolean
+  heartsCount: Int
+}
+
+type ViewerNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ViewerNodeEdge]!
+}
+
+"""A Relay edge containing a `ViewerNode` and its cursor."""
+type ViewerNodeEdge {
+  """The item at the end of the edge"""
+  node: ViewerNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type WeddingNode implements Node & SiteDetail {
+  user: ViewerNode!
+  weddingDate: Date
+  weddingCity: String
+  country: CountryNode
+  county: CountyNode
+  partnerName: String
+  info: ID
+
+  """The ID of the object."""
+  id: ID!
+  experiences: String
+}
+
+type WeddingNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [WeddingNodeEdge]!
+}
+
+"""A Relay edge containing a `WeddingNode` and its cursor."""
+type WeddingNodeEdge {
+  """The item at the end of the edge"""
+  node: WeddingNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+input WeddingTodoListMutationInput {
+  data: JSONString!
+  clientMutationId: String
+}
+
+type WeddingTodoListMutationPayload {
+  clientMutationId: String
+}
+
+Done in 1.47s.
