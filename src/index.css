@@ -147,3 +147,13 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+a {
+  color: var(--palette-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  filter: brightness(140%);
+}

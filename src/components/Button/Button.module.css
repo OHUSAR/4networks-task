@@ -1,0 +1,20 @@
+.button {
+  background: transparent;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  padding: 0.5625rem;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #eceff1;
+}
+
+.button i:first-child {
+  margin-right: 0.5rem;
+}
+
+.button i:last-child {
+  margin-left: 0.5rem;
+}

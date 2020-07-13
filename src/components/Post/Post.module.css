@@ -7,6 +7,29 @@
   border-radius: 0.625rem;
 }
 
+.post .title {
+  padding: 0 1rem 1rem 1rem;
+  font-weight: bold;
+  font-size: 1.125rem;
+}
+
+.post .title h3 > span {
+  font-weight: 300;
+  color: var(--palette-caption);
+}
+
+.post > hr {
+  border: none;
+  border-top: 1px solid #cfd8dc;
+  margin: 0 1rem;
+}
+
+.post > footer {
+  padding: 0.5rem 1rem;
+  flex-direction: row;
+  display: flex;
+}
+
 .post:not(:last-of-type) {
   margin-bottom: 2rem;
 }
@@ -14,7 +37,7 @@
 .albumImages {
   flex-direction: row;
   overflow: hidden;
-  margin: 0 1rem;
+  margin: 0 1rem 1rem 1rem;
   display: flex;
 }
 
@@ -32,13 +55,20 @@
 }
 
 .post > header > div {
-  padding: 1rem;
+  padding: 0 1rem;
 }
 
 .post > header > div > time {
   align-items: center;
   margin-top: 0.5rem;
   display: flex;
+  color: var(--palette-caption);
+}
+
+.post > header > div > time > i {
+  fill: var(--palette-caption);
+  margin-right: 0.25rem;
+  transform: scale(0.8);
 }
 
 .createdAtIcon {
@@ -62,7 +92,9 @@
 }
 
 .content {
-  padding: 1rem;
-  font-size: 1rem;
   line-height: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  padding: 0 1rem;
+  white-space: pre-line;
 }

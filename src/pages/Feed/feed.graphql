@@ -1,7 +1,8 @@
 query Feed($after: String) {
-  feed(first: 3, after: $after) {
+  feed(first: 30, after: $after) {
     edges {
       node {
+        href
         id
         createdTime
         postType

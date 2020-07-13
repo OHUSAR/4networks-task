@@ -23,13 +23,13 @@ module.exports = {
     "react-app",
   ],
   rules: {
+    "react/prop-types": "off", // Not working well with TS
+    "react/display-name": "off", // Not working well with Arrow functions
     "@typescript-eslint/ban-ts-ignore": "off",
-    "@typescript-eslint/ban-ts-comment": "off",
-    // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
-    // "@typescript-eslint/ban-ts-comment": [
-    //   prodErrorOthersWarn,
-    //   { "ts-ignore": "allow-with-description" },
-    // ],
+    "@typescript-eslint/ban-ts-comment": [
+      prodErrorOthersWarn,
+      { "ts-ignore": "allow-with-description" },
+    ],
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "jsx-quotes": ["error", "prefer-double"],

@@ -1,5 +1,8 @@
 import React, { FC } from "react";
 
+import Icon from "components/Icon";
+import Button from "components/Button";
+
 import styles from "./Post.module.css";
 
 enum PostType {
@@ -28,6 +31,10 @@ interface Post {
   images: { edges: PostImage[] };
   createdTime: string; // Datetime timestamp
   content?: string;
+  title?: string;
+  imagesCount?: number;
+  href?: string;
+  likesCount: number;
 }
 
 interface Props {
@@ -35,7 +42,7 @@ interface Props {
 }
 
 const Post: FC<Props> = ({ post }: Props) => {
-  // @ts-ignore
+  // @ts-ignore: TODO: use polyfill
   const relDate = new Intl.RelativeTimeFormat("sk", { style: "long" }); // TODO: create helper with connection to current locale
 
   return (
@@ -49,27 +56,7 @@ const Post: FC<Props> = ({ post }: Props) => {
             {post.user.profile.name || "Unknown user"}
           </a>
           <time>
-            <svg
-              xmlnsXlink="http://www.w3.org/1999/xlink"
-              enableBackground="new 0 0 256 256"
-              xmlns="http://www.w3.org/2000/svg"
-              className={styles.createdAtIcon}
-              viewBox="0 0 256 256"
-              xmlSpace="preserve"
-              version="1.1"
-              x="0px"
-              y="0px"
-            >
-              <g>
-                <g>
-                  <path
-                    d="M128,256C57.4,256,0,198.6,0,128S57.4,0,128,0s128,57.4,128,128S198.6,256,128,256z M128,23C70.1,23,23,70.1,23,128
-                  s47.1,105,105,105s105-47.1,105-105S185.9,23,128,23z"
-                  />
-                  <polygon points="116.5,140.1 116.5,64.7 133,64.7 133,132.1 190.7,166 182.5,179.7" />
-                </g>
-              </g>
-            </svg>
+            <Icon name="clock" />
             {relDate.format(
               ((new Date(post.createdTime).getTime() - Date.now()) /
                 (24 * 60 * 60 * 1000)) |
@@ -80,15 +67,49 @@ const Post: FC<Props> = ({ post }: Props) => {
         </div>
       </header>
 
-      {post.content && <p className={styles.content}>{post.content}</p>}
+      {(post.content || post.title) && (
+        <p className={styles.content}>{post.content || post.title}</p>
+      )}
 
-      {post.postType === PostType.POST_ALBUM && (
+      {post.images && post.images.edges && (
         <figure className={styles.albumImages}>
           {post.images.edges.map(({ node }) => (
             <img key={node.id} src={node.photoFile.src} alt={node.alt} /> // TODO: inspect how to load smaller thumbs - API request
           ))}
         </figure>
       )}
+
+      {post.postType === PostType.POST_ALBUM && (
+        <a className={styles.title} href={post.href}>
+          {/* TODO: use pluralization like http://userguide.icu-project.org/formatparse/messages */}
+          <h3>
+            {post.title} <span>({`${post.imagesCount} fotiek`})</span>
+          </h3>
+        </a>
+      )}
+
+      <hr />
+
+      <footer>
+        {post.likesCount > 0 && (
+          <Button>
+            <Icon name="likeFilled" />
+            {post.likesCount}
+          </Button>
+        )}
+        <Button>
+          {post.likesCount === 0 && <Icon name="like" />}
+          Páči sa mi to
+        </Button>
+        <Button>
+          <Icon name="comment" />
+          Komentáre
+        </Button>
+        <Button>
+          <Icon name="more" />
+          Viac
+        </Button>
+      </footer>
     </article>
   );
 };
