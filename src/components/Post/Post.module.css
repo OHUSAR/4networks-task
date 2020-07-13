@@ -98,3 +98,14 @@
   padding: 0 1rem;
   white-space: pre-line;
 }
+
+.comments {
+  /* TODO: unify colors */
+  border-top: 1px solid #eceff1;
+  padding: 1rem;
+}
+
+.comments pre {
+  white-space: break-spaces;
+  font-size: 0.625rem;
+}

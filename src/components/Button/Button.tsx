@@ -6,8 +6,12 @@ interface Props {
   onClick?: () => void;
 }
 
-const Button: FC<Props> = memo(({ children }) => {
-  return <button className={styles.button}>{children}</button>;
+const Button: FC<Props> = memo(({ children, ...rest }) => {
+  return (
+    <button className={styles.button} {...rest}>
+      {children}
+    </button>
+  );
 });
 
 export default Button;

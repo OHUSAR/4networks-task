@@ -1,0 +1,9 @@
+query Comments($parentId: ID!) {
+  comments(parentId: $parentId) {
+    edges {
+      node {
+        comment
+      }
+    }
+  }
+}

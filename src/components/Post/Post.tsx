@@ -2,8 +2,9 @@ import React, { FC } from "react";
 
 import Icon from "components/Icon";
 import Button from "components/Button";
+import usePostComments from "helpers/usePostComments";
 
-import styles from "./Post.module.css";
+import classes from "./Post.module.css";
 
 enum PostType {
   POST_ALBUM = "POST_ALBUM",
@@ -35,6 +36,7 @@ interface Post {
   imagesCount?: number;
   href?: string;
   likesCount: number;
+  commentCount: number;
 }
 
 interface Props {
@@ -42,12 +44,16 @@ interface Props {
 }
 
 const Post: FC<Props> = ({ post }: Props) => {
+  const { comments, loading: loadingComments, toggle } = usePostComments(
+    post.id
+  );
+
   // @ts-ignore: TODO: use polyfill
   const relDate = new Intl.RelativeTimeFormat("sk", { style: "long" }); // TODO: create helper with connection to current locale
 
   return (
-    <article className={styles.post}>
-      <header className={styles.header}>
+    <article className={classes.post}>
+      <header className={classes.header}>
         <img src={post.user.profile.avatar.src} alt="avatar" />
 
         <div>
@@ -68,11 +74,11 @@ const Post: FC<Props> = ({ post }: Props) => {
       </header>
 
       {(post.content || post.title) && (
-        <p className={styles.content}>{post.content || post.title}</p>
+        <p className={classes.content}>{post.content || post.title}</p>
       )}
 
       {post.images && post.images.edges && (
-        <figure className={styles.albumImages}>
+        <figure className={classes.albumImages}>
           {post.images.edges.map(({ node }) => (
             <img key={node.id} src={node.photoFile.src} alt={node.alt} /> // TODO: inspect how to load smaller thumbs - API request
           ))}
@@ -80,7 +86,7 @@ const Post: FC<Props> = ({ post }: Props) => {
       )}
 
       {post.postType === PostType.POST_ALBUM && (
-        <a className={styles.title} href={post.href}>
+        <a className={classes.title} href={post.href}>
           {/* TODO: use pluralization like http://userguide.icu-project.org/formatparse/messages */}
           <h3>
             {post.title} <span>({`${post.imagesCount} fotiek`})</span>
@@ -97,19 +103,31 @@ const Post: FC<Props> = ({ post }: Props) => {
             {post.likesCount}
           </Button>
         )}
+
         <Button>
           {post.likesCount === 0 && <Icon name="like" />}
+          {/* TODO: translations helper */}
           Páči sa mi to
         </Button>
-        <Button>
+
+        <Button onClick={() => toggle()}>
           <Icon name="comment" />
           Komentáre
+          {post.commentCount ? ` (${post.commentCount})` : null}
         </Button>
+
         <Button>
           <Icon name="more" />
           Viac
         </Button>
       </footer>
+
+      {(comments || loadingComments) && (
+        <aside className={classes.comments}>
+          {loadingComments && "..."}
+          <pre>{JSON.stringify(comments, null, 2)}</pre>
+        </aside>
+      )}
     </article>
   );
 };

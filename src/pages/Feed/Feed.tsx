@@ -6,6 +6,7 @@ import Post from "components/Post";
 
 import styles from "./feed.module.css";
 
+// TODO: use babel plugin
 const query = loader("./feed.graphql");
 
 const Feed: FC = () => {
